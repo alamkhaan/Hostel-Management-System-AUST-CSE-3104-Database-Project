@@ -310,6 +310,63 @@ public class ConnectMSSQL {
         }
     }
     
+    public ArrayList<MealInfo> getMealInfo(String query)
+    {
+        ArrayList<MealInfo> database = new ArrayList();
+        
+        
+        
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            connection = DriverManager.getConnection(
+                    "jdbc:sqlserver://localhost:1433;databaseName=Hostel_Management_System;selectMethod=cursor", "sa", "123456");
+
+            //System.out.println("DATABASE NAME IS:" + connection.getMetaData().getDatabaseProductName());
+
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement
+                    .executeQuery("SELECT * FROM Meal "+query);
+            
+            
+            while (resultSet.next()) {
+                
+                MealInfo temp = new MealInfo();
+                temp.setMealId(Integer.toString(resultSet.getInt("MealId")));
+                temp.setMemberId(resultSet.getString("MemberId").toString());
+                temp.setMealType(resultSet.getString("MealType").toString());
+                temp.setNoOfMeal(resultSet.getString("NoOfMeal").toString());
+                
+               
+                database.add(temp);
+              
+            }
+           
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return database;
+    
+    }
+    
+    public void addMeal(MealInfo meal) throws Exception
+    {
+        
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            connection = DriverManager.getConnection(
+                    "jdbc:sqlserver://localhost:1433;databaseName=Hostel_Management_System;selectMethod=cursor", "sa", "123456");
+
+            
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("Insert into Meal (MemberId,MealTYpe,NoOfMeal) values ('"+meal.getMemberId()+"','"+meal.getMealType()+"','"+meal.getNoOfMeal()+"')");
+                 
+        } catch (Exception e) {
+            throw new Exception(e);
+            
+        }
+    }
+    
     public ArrayList<SeatInfo> getSeatInfo(String query)
     {
         ArrayList<SeatInfo> database = new ArrayList();
@@ -349,6 +406,8 @@ public class ConnectMSSQL {
         return database;
     
     }
+    
+    
     
     public void update(String dbName,String query)
     {
