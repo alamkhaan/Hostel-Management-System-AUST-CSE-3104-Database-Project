@@ -233,6 +233,11 @@ public class PaymentHistory extends javax.swing.JFrame {
         getContentPane().add(nextButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 460, -1, -1));
 
         prevButton.setText("Prev");
+        prevButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prevButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(prevButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, -1, -1));
 
         pack();
@@ -330,6 +335,10 @@ public class PaymentHistory extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_prevButtonActionPerformed
 
     /**
      * @param args the command line arguments

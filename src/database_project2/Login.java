@@ -78,13 +78,15 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Email :");
 
-        jUserName.setText("jTextField1");
+        jUserName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jUserNameActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Password :");
-
-        jPassword.setText("jPasswordField1");
 
         login.setBackground(new java.awt.Color(51, 51, 255));
         login.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -108,7 +110,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                    .addComponent(jPassword)
                     .addComponent(jUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(48, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -136,7 +138,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jPanel3);
         jPanel3.setBounds(290, 80, 410, 400);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\SARK\\Documents\\3645887_17122513430060612604.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/login.jpg"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(1050, 570));
         jLabel1.setMinimumSize(new java.awt.Dimension(1050, 570));
         getContentPane().add(jLabel1);
@@ -175,7 +177,8 @@ public class Login extends javax.swing.JFrame {
         {
             HomePage obj2 = new HomePage(temp);
             this.setVisible(false);
-            obj2.setVisible(true);
+            //obj2.setVisible(true);
+            new LoadingPage().setVisible(true);
         }
         //this.setVisible(false);
         //new HomePage(temp).setVisible(true);
@@ -185,6 +188,10 @@ public class Login extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_loginActionPerformed
+
+    private void jUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUserNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jUserNameActionPerformed
 
     /**
      * @param args the command line arguments

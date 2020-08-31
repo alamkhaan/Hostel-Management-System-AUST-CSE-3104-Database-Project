@@ -37,15 +37,25 @@ public class HomePage extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        Member = new javax.swing.JLabel();
         memberButton = new javax.swing.JButton();
+        Payment = new javax.swing.JLabel();
         paymentButton = new javax.swing.JButton();
+        Room = new javax.swing.JLabel();
         roomButton = new javax.swing.JButton();
+        Meal = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        Visitor = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
@@ -53,7 +63,8 @@ public class HomePage extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1050, 570));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(25,25,112,150));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -64,24 +75,36 @@ public class HomePage extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(235, 235, 235)
+                .addGap(446, 446, 446)
                 .addComponent(jLabel1)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addContainerGap(479, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 610, 60));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 70));
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Settings");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 370, -1, -1));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hb.jpg"))); // NOI18N
         jButton1.setText("Settings");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 310, 130, 140));
 
+        Member.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        Member.setForeground(new java.awt.Color(255, 255, 255));
+        Member.setText("Member");
+        getContentPane().add(Member, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
+
+        memberButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hb.jpg"))); // NOI18N
         memberButton.setText("Member ");
         memberButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         memberButton.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +114,12 @@ public class HomePage extends javax.swing.JFrame {
         });
         getContentPane().add(memberButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 130, 140));
 
+        Payment.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        Payment.setForeground(new java.awt.Color(255, 255, 255));
+        Payment.setText("Payment");
+        getContentPane().add(Payment, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
+
+        paymentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hb.jpg"))); // NOI18N
         paymentButton.setText("Payment");
         paymentButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         paymentButton.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +129,12 @@ public class HomePage extends javax.swing.JFrame {
         });
         getContentPane().add(paymentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 130, 140));
 
+        Room.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        Room.setForeground(new java.awt.Color(255, 255, 255));
+        Room.setText("Room");
+        getContentPane().add(Room, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, -1, -1));
+
+        roomButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hb.jpg"))); // NOI18N
         roomButton.setText("Room");
         roomButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         roomButton.addActionListener(new java.awt.event.ActionListener() {
@@ -109,10 +144,27 @@ public class HomePage extends javax.swing.JFrame {
         });
         getContentPane().add(roomButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 130, 140));
 
+        Meal.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        Meal.setForeground(new java.awt.Color(255, 255, 255));
+        Meal.setText("Meal");
+        getContentPane().add(Meal, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 180, -1, -1));
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hb.jpg"))); // NOI18N
         jButton5.setText("Meal");
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 120, 130, 140));
 
+        Visitor.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        Visitor.setForeground(new java.awt.Color(255, 255, 255));
+        Visitor.setText("Visitor");
+        getContentPane().add(Visitor, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 180, -1, -1));
+
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hb.jpg"))); // NOI18N
         jButton6.setText("Visitors");
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -122,17 +174,43 @@ public class HomePage extends javax.swing.JFrame {
         });
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 120, 130, 140));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Employee");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, -1, -1));
+
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hb.jpg"))); // NOI18N
         jButton7.setText("Employee");
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 130, 140));
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Expense");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, -1, -1));
+
+        jButton8.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hb.jpg"))); // NOI18N
         jButton8.setText("Expense");
         jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 130, 140));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Dashboard");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 370, 90, 20));
+
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hb.jpg"))); // NOI18N
         jButton9.setText("DashBoard");
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 310, 130, 140));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Downloads\\black (1).jpg")); // NOI18N
+        jLabel2.setText("jLabel2");
+        jLabel2.setMaximumSize(new java.awt.Dimension(1050, 570));
+        jLabel2.setMinimumSize(new java.awt.Dimension(1050, 570));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 570));
 
         pack();
         setLocationRelativeTo(null);
@@ -156,6 +234,11 @@ public class HomePage extends javax.swing.JFrame {
         new Room(this.AdminId).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_roomButtonActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        new Meal(this.AdminId).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,6 +276,11 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Meal;
+    private javax.swing.JLabel Member;
+    private javax.swing.JLabel Payment;
+    private javax.swing.JLabel Room;
+    private javax.swing.JLabel Visitor;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -200,6 +288,11 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton memberButton;
     private javax.swing.JButton paymentButton;
