@@ -20,7 +20,8 @@ public class LoadingPage extends javax.swing.JFrame {
      */
     public LoadingPage() {
         initComponents();
-        //loadingFunction();
+        jBarString.setOpaque(true);
+        
         
     }
 
@@ -36,6 +37,8 @@ public class LoadingPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jBarString = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -45,10 +48,15 @@ public class LoadingPage extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51,150));
+        jPanel1.setMaximumSize(new java.awt.Dimension(1050, 570));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1050, 570));
+        jPanel1.setName(""); // NOI18N
+        jPanel1.setPreferredSize(new java.awt.Dimension(1050, 570));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51,150));
 
         jLabel3.setFont(new java.awt.Font("MV Boli", 1, 40)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 0));
         jLabel3.setText("Hostel Management System");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -65,24 +73,43 @@ public class LoadingPage extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/ezgif.com-resize.gif"))); // NOI18N
+
+        jBarString.setBackground(new java.awt.Color(51, 51, 51));
+        jBarString.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
+        jBarString.setForeground(new java.awt.Color(255, 255, 0));
+        jBarString.setFocusCycleRoot(true);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(173, 173, 173)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(456, 456, 456)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(419, 419, 419)
+                        .addComponent(jBarString, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(234, 234, 234)
+                .addGap(114, 114, 114)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addGap(95, 95, 95)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jBarString, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
@@ -95,6 +122,7 @@ public class LoadingPage extends javax.swing.JFrame {
         jLabel1.setBounds(0, 0, 1050, 570);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -131,33 +159,16 @@ public class LoadingPage extends javax.swing.JFrame {
             }
         });
     }
-    
-    public void loadingFunction()
+    public void setBarString(String str)
     {
-        JProgressBar bar = new JProgressBar(); 
-        bar.setBounds(400,300,200,70);
-        int i = 0; 
-        try { 
-            while (i <= 100) {
-                if (i > 30 && i < 70) 
-                    bar.setString("Wait for sometime"+i+"%"); 
-                else if (i > 70) 
-                    bar.setString("Almost finished loading"+i+"%"); 
-                else
-                    bar.setString("Loading started "+i+"%"); 
-                bar.setValue(i + 5); 
-                Thread.sleep(500); 
-                i += 10; 
-            }
-            new Login().setVisible(true);
-            this.setVisible(false);
-        } 
-        catch (Exception e) { 
-        } 
+        jBarString.setText(str);
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jBarString;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
