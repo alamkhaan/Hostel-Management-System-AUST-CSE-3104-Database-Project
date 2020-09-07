@@ -63,7 +63,7 @@ public class Payment extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1050, 570));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(15, 19, 52));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -152,7 +152,7 @@ public class Payment extends javax.swing.JFrame {
                 resetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, 100, 40));
+        getContentPane().add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 460, 100, 40));
 
         submitButton.setText("Submit");
         submitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +160,7 @@ public class Payment extends javax.swing.JFrame {
                 submitButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 460, 100, 40));
+        getContentPane().add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 100, 40));
 
         paymentHistoryButton.setText("Payment History");
         paymentHistoryButton.addActionListener(new java.awt.event.ActionListener() {

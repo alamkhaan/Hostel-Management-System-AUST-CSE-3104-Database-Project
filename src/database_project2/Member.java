@@ -40,6 +40,7 @@ public class Member extends javax.swing.JFrame {
         initComponents();
         jTable1.getColumnModel().getColumn(5).setPreferredWidth(115);
         arr = new ConnectMSSQL().getMemberInfo("");
+        jTable1.setDefaultEditor(Object.class, null);
         clearTable(jTable1);
         
         if((modIndex+1)*16>=arr.size())
@@ -102,7 +103,7 @@ public class Member extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1050, 570));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(15, 19, 52));
 
         backToHome.setText("Back");
         backToHome.addActionListener(new java.awt.event.ActionListener() {

@@ -49,7 +49,7 @@ public class AddMeal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         memberId = new javax.swing.JTextField();
-        saveButton = new javax.swing.JButton();
+        submitButton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
         mealType = new javax.swing.JComboBox<>();
         noOfMeal = new javax.swing.JComboBox<>();
@@ -59,7 +59,7 @@ public class AddMeal extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1050, 570));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(15, 19, 52));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -97,30 +97,35 @@ public class AddMeal extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Meal Type:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 130, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 130, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("No Of Meal:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Member Id :");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, -1, -1));
 
+        memberId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                memberIdActionPerformed(evt);
+            }
+        });
         memberId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 memberIdKeyTyped(evt);
             }
         });
-        getContentPane().add(memberId, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 380, 50));
+        getContentPane().add(memberId, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 380, 50));
 
-        saveButton.setText("Save");
-        saveButton.addActionListener(new java.awt.event.ActionListener() {
+        submitButton.setText("Submit");
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveButtonActionPerformed(evt);
+                submitButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 460, 110, 50));
+        getContentPane().add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 110, 50));
 
         resetButton.setText("Reset");
         resetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -128,13 +133,13 @@ public class AddMeal extends javax.swing.JFrame {
                 resetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 460, 100, 50));
+        getContentPane().add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, 100, 50));
 
         mealType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Breakfast", "Lunch", "Dinner" }));
-        getContentPane().add(mealType, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 380, 50));
+        getContentPane().add(mealType, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 380, 50));
 
         noOfMeal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
-        getContentPane().add(noOfMeal, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 380, 50));
+        getContentPane().add(noOfMeal, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 380, 50));
 
         pack();
         setLocationRelativeTo(null);
@@ -151,8 +156,8 @@ public class AddMeal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_memberIdKeyTyped
 
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-         ArrayList<MemberInfo> arr=new ArrayList();
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        ArrayList<MemberInfo> arr=new ArrayList();
         if(memberId.getText().length()==0)
         {
             JOptionPane.showMessageDialog(this, "Member Id is empty","Error",JOptionPane.ERROR_MESSAGE);
@@ -179,7 +184,15 @@ public class AddMeal extends javax.swing.JFrame {
                 
                 try{
                     new ConnectMSSQL().addMeal(meal);
+                    MemberInfo m = arr.get(0);
+                    m.setDue(m.getDue()+(new MemberRegistration().calDue(meal.getMealType(), ""))/30*(Integer.valueOf(meal.getNoOfMeal())));
+                    System.out.println(m.getDue());
+                    new ConnectMSSQL().updateMember(m);
+                    
+            
                     JOptionPane.showMessageDialog(this, "Insert Successfully","Successfull",JOptionPane.INFORMATION_MESSAGE);
+                    
+                    memberId.setText("");
                 }
                 catch(Exception e){
                     JOptionPane.showMessageDialog(this, "Error Occured,Unsuccessful"+e.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
@@ -192,7 +205,7 @@ public class AddMeal extends javax.swing.JFrame {
         }
         
         
-    }//GEN-LAST:event_saveButtonActionPerformed
+    }//GEN-LAST:event_submitButtonActionPerformed
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         memberId.setText("");
@@ -202,6 +215,10 @@ public class AddMeal extends javax.swing.JFrame {
         new Meal(this.AdminId).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void memberIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memberIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_memberIdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,6 +266,6 @@ public class AddMeal extends javax.swing.JFrame {
     private javax.swing.JTextField memberId;
     private javax.swing.JComboBox<String> noOfMeal;
     private javax.swing.JButton resetButton;
-    private javax.swing.JButton saveButton;
+    private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
 }

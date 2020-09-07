@@ -7,6 +7,7 @@ package database_project2;
 
 import java.awt.Color;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -21,6 +22,10 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+     
+        
+        
+        
     }
 
     /**
@@ -147,16 +152,70 @@ public class Login extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    public int monthDiff(String query1,String query2)
+    {
+        int x = (Integer.valueOf(query1.substring(0,4)))*12+Integer.valueOf(query1.substring(4,6));
+        int y = (Integer.valueOf(query2.substring(0,4)))*12+Integer.valueOf(query2.substring(4,6));
+        
+        return Math.abs(x-y);
+    }
+    
+    public int calDue(String mealType,String seatId)
+    {
+        int cost = 0;
+        PackageInfo p = new PackageInfo();
+        p = new ConnectMSSQL().getPackageInfo("");
+        if(mealType.equals("Breakfast"))
+        {
+            cost+= p.getB();
+        }
+        else if(mealType.equals("Lunch"))
+        {
+            cost+= p.getL();
+        }
+        else if(mealType.equals("Dinner"))
+        {
+            cost+= p.getD();
+        }
+        else if(mealType.equals("BreakFast+Lunch"))
+        {
+            cost+= p.getBl();
+        }
+        else if(mealType.equals("Breakfast+Dinner"))
+        {
+            cost+= p.getBd();
+        }
+        else if(mealType.equals("Lunch+Dinner"))
+        {
+            cost+= p.getLd();
+        }
+        else if(mealType.equals("Breakfast+Lunch+Dinner"))
+        {
+            cost+= p.getBld();
+        }
+        if(seatId.length()==0)
+            return cost;
+        SeatInfo s = (new ConnectMSSQL().getSeatInfo("where SeatId = '"+seatId+"'")).get(0);
+        RoomInfo r = (new ConnectMSSQL().getRoomInfo("where RoomId = '"+s.getRoomId()+"'")).get(0);
+        if(r.getType().equals("Ac"))
+        {
+            cost+= p.getAc();
+        }
+        else
+        {
+            cost+= p.getNonAc();
+        }
+            
+        
+        return cost;
+    }
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
-        String username = "";
+        String username = jUserName.getText();
         String password = new String(jPassword.getPassword());;
-        username  = jUserName.getText();
-        //username = "tanjim";
-        //password = "123456";
+        
  
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
+        /*SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
         Date date = new Date();  
         String f = formatter.format(date);  
         char[] ch = f.toCharArray();
@@ -164,7 +223,7 @@ public class Login extends javax.swing.JFrame {
         for(int i=0;i<f.length();i++)
             System.out.print(ch[i]);
         System.out.println();
-        System.out.println(f.substring(2,4)+f.substring(5,7));
+        System.out.println(f.substring(2,4)+f.substring(5,7));*/
         
         ConnectMSSQL obj  = new ConnectMSSQL();
         String temp = obj.checkLogin(username,password);
@@ -175,16 +234,12 @@ public class Login extends javax.swing.JFrame {
         }
         else
         {
-            HomePage obj2 = new HomePage(temp);
+       
+           
+            new HomePage(temp).setVisible(true);
             this.setVisible(false);
-            //obj2.setVisible(true);
-            new LoadingPage().setVisible(true);
+            
         }
-        //this.setVisible(false);
-        //new HomePage(temp).setVisible(true);
-        
-        
-        //JOptionPane.showMessageDialog(rootPane, temp);
         
         
     }//GEN-LAST:event_loginActionPerformed

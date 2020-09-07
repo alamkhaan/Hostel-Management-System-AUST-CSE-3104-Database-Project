@@ -15,6 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javafx.util.Pair;
 
 public class ConnectMSSQL {
     
@@ -22,7 +23,7 @@ public class ConnectMSSQL {
             
     public String checkLogin(String userName,String password) {
         
-        String id = "";
+        
         
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -33,13 +34,13 @@ public class ConnectMSSQL {
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement
-                    .executeQuery("SELECT username,password,EmployeeId FROM Admin");
+                    .executeQuery("SELECT * FROM Admin");
             
             //System.out.println("parameter "+userName+" "+password);
             while (resultSet.next()) {
                 String tempuser,temppass;
-                tempuser = resultSet.getString("username").toString();
-                temppass = resultSet.getString("password").toString();
+                tempuser = resultSet.getString("username");
+                temppass = resultSet.getString("password");
                
                 //System.out.println(tempuser+" "+temppass);
                
@@ -56,7 +57,41 @@ public class ConnectMSSQL {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return id;
+        return "";
+        
+    }
+    
+    public Pair<String,String> getAdminInfo(String AdminId) {
+        
+        String tempuser="",temppass="";
+        
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            connection = DriverManager.getConnection(
+                    "jdbc:sqlserver://localhost:1433;databaseName=Hostel_Management_System;selectMethod=cursor", "sa", "123456");
+
+            //System.out.println("DATABASE NAME IS:" + connection.getMetaData().getDatabaseProductName());
+
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement
+                    .executeQuery("SELECT username,password FROM Admin where EmployeeId = '"+AdminId+"'");
+            
+            //System.out.println("parameter "+userName+" "+password);
+            
+            while (resultSet.next()) {
+                
+                tempuser = resultSet.getString("username").toString();
+                temppass = resultSet.getString("password").toString();
+               
+                //System.out.println(tempuser+" "+temppass)
+                
+            }
+           
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new Pair<String,String> (tempuser,temppass);
         
     }
     public ArrayList<MemberInfo> getMemberInfo(String query)
@@ -96,6 +131,64 @@ public class ConnectMSSQL {
                 temp.setSeatNo(resultSet.getString("SeatNo").toString());
                 temp.setMealType(resultSet.getString("MealType").toString());
                 temp.setDue(resultSet.getInt("Due"));
+                temp.setImage(resultSet.getBytes("Picture"));
+                temp.setLastDueMonth(resultSet.getString("LastDueMonth"));
+                //System.out.println(resultSet.getString("Name").toString()+" "+ temp.getName());
+                database.add(temp);
+                
+                
+                /*for(int i=0;i<database.size();i++)
+                {
+                    System.out.println(database.get(i).getMemberId()+" "+database.get(i).getName()+" "+database.get(i).getContactNo()+" "+database.get(i).getBloodGroup()+" "+database.get(i).getSeatNo()+" "+database.get(i).getMealType());
+                }*/
+               
+              
+                
+            }
+           
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        //System.out.println(database.size());
+        return database;
+    }
+    public ArrayList<EmployeeInfo> getEmployeeInfo(String query)
+    {
+        ArrayList<EmployeeInfo> database = new ArrayList();
+        
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            connection = DriverManager.getConnection(
+                    "jdbc:sqlserver://localhost:1433;databaseName=Hostel_Management_System;selectMethod=cursor", "sa", "123456");
+
+            //System.out.println("DATABASE NAME IS:" + connection.getMetaData().getDatabaseProductName());
+
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement
+                    .executeQuery("SELECT * FROM Employee "+query);
+            
+            
+            while (resultSet.next()) {
+                /*System.out.println(database.size());
+                for(int i=0;i<database.size();i++)
+                {
+                   // System.out.println(database.get(i).getMemberId()+" "+database.get(i).getName()+" "+database.get(i).getContactNo()+" "+database.get(i).getBloodGroup()+" "+database.get(i).getSeatNo()+" "+database.get(i).getMealType());
+                }*/
+                EmployeeInfo temp = new EmployeeInfo();
+                temp.setName(resultSet.getString("Name").toString());
+                temp.setEmployeeId(resultSet.getString("EmployeeId").toString());
+                temp.setFathersName(resultSet.getString("FathersName").toString());
+                temp.setMothersName(resultSet.getString("MothersName").toString());
+                temp.setEmail(resultSet.getString("Email").toString());
+                temp.setContactNo(resultSet.getString("ContactNo").toString());
+                temp.setDateOfBirth(resultSet.getString("DateOfBirth").toString());
+                temp.setBloodGroup(resultSet.getString("BloodGroup").toString());
+                temp.setAddress(resultSet.getString("Address").toString());
+                temp.setPost(resultSet.getString("Post").toString());
+                temp.setGuardianContactNo(resultSet.getString("GuardianContactNo").toString());
+                temp.setSalary(resultSet.getInt("Salary"));
                 temp.setImage(resultSet.getBytes("Picture"));
                 
                 //System.out.println(resultSet.getString("Name").toString()+" "+ temp.getName());
@@ -283,7 +376,7 @@ public class ConnectMSSQL {
             
             connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=Hostel_Management_System;selectMethod=cursor", "sa", "123456");
 
-            PreparedStatement st = connection.prepareStatement("Insert into Member(MemberId,Name,FathersName,MothersName,Email,ContactNo,DateOfBirth,BloodGroup,Address,Profession,GuardianContactNo,SeatNo,MealType,Picture,Due) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");  
+            PreparedStatement st = connection.prepareStatement("Insert into Member(MemberId,Name,FathersName,MothersName,Email,ContactNo,DateOfBirth,BloodGroup,Address,Profession,GuardianContactNo,SeatNo,MealType,Picture,Due,LastDueMonth) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");  
             
             st.setString(1, user.getMemberId());
             st.setString(2,user.getName());
@@ -300,6 +393,39 @@ public class ConnectMSSQL {
             st.setString(13, user.getMealType());
             st.setBytes(14, user.getImage());
             st.setInt(15, user.getDue());
+            st.setString(16, user.getLastDueMonth());
+            st.execute();
+            
+        }
+        catch(Exception e)
+        {
+            
+            throw new Exception(e);
+        }
+    }
+    
+    public void addEmployee(EmployeeInfo user) throws Exception
+    {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            
+            connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=Hostel_Management_System;selectMethod=cursor", "sa", "123456");
+
+            PreparedStatement st = connection.prepareStatement("Insert into Employee(EmployeeId,Name,FathersName,MothersName,Email,ContactNo,DateOfBirth,BloodGroup,Address,Post,GuardianContactNo,Salary,Picture) values(?,?,?,?,?,?,?,?,?,?,?,?,?)");  
+            
+            st.setString(1, user.getEmployeeId());
+            st.setString(2,user.getName());
+            st.setString(3,user.getFathersName());
+            st.setString(4, user.getMothersName());
+            st.setString(5, user.getEmail());
+            st.setString(6, user.getContactNo());
+            st.setString(7, user.getDateOfBirth());
+            st.setString(8, user.getBloodGroup());
+            st.setString(9, user.getAddress());
+            st.setString(10, user.getPost());
+            st.setString(11, user.getGuardianContactNo());
+            st.setInt(12, user.getSalary());
+            st.setBytes(13, user.getImage());
             st.execute();
             
         }
@@ -348,7 +474,85 @@ public class ConnectMSSQL {
         return database;
     
     }
+    public ArrayList<VisitorInfo> getVisitorInfo(String query)
+    {
+        ArrayList<VisitorInfo> database = new ArrayList();
+        
+        
+        
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            connection = DriverManager.getConnection(
+                    "jdbc:sqlserver://localhost:1433;databaseName=Hostel_Management_System;selectMethod=cursor", "sa", "123456");
+
+            //System.out.println("DATABASE NAME IS:" + connection.getMetaData().getDatabaseProductName());
+
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement
+                    .executeQuery("SELECT * FROM Visitor "+query);
+            
+            
+            while (resultSet.next()) {
+                
+                VisitorInfo temp = new VisitorInfo();
+                temp.setVisitorId(resultSet.getString("VisitorId"));
+                temp.setVisitorsName(resultSet.getString("VisitorsName"));
+                temp.setMemberId(resultSet.getString("MemberId").toString());
+                temp.setTimeIn(resultSet.getString("TimeIn").toString());
+                temp.setTimeOut(resultSet.getString("TimeOut").toString());
+                
+               
+                database.add(temp);
+              
+            }
+           
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return database;
     
+    }
+    
+    public ArrayList<ExpenseInfo> getExpenseInfo(String query)
+    {
+        ArrayList<ExpenseInfo> database = new ArrayList();
+        
+        
+        
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            connection = DriverManager.getConnection(
+                    "jdbc:sqlserver://localhost:1433;databaseName=Hostel_Management_System;selectMethod=cursor", "sa", "123456");
+
+            //System.out.println("DATABASE NAME IS:" + connection.getMetaData().getDatabaseProductName());
+
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement
+                    .executeQuery("Select *from Expense "+query);
+            
+            
+            while (resultSet.next()) {
+                
+                ExpenseInfo temp = new ExpenseInfo();
+                temp.setExpenseId(resultSet.getString("ExpenseId"));
+                temp.setExpenseName(resultSet.getString("ExpenseName"));
+                temp.setDate(resultSet.getString("Date").toString());
+                temp.setAmount(resultSet.getInt("Amount"));
+                
+                
+               
+                database.add(temp);
+              
+            }
+           
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return database;
+    
+    }
     public void addMeal(MealInfo meal) throws Exception
     {
         
@@ -361,6 +565,41 @@ public class ConnectMSSQL {
             Statement statement = connection.createStatement();
             statement.executeUpdate("Insert into Meal (MemberId,MealTYpe,NoOfMeal) values ('"+meal.getMemberId()+"','"+meal.getMealType()+"','"+meal.getNoOfMeal()+"')");
                  
+        } catch (Exception e) {
+            throw new Exception(e);
+            
+        }
+    }
+    public void addVisitor(VisitorInfo visitor) throws Exception
+    {
+        
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            connection = DriverManager.getConnection(
+                    "jdbc:sqlserver://localhost:1433;databaseName=Hostel_Management_System;selectMethod=cursor", "sa", "123456");
+
+            
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("Insert into Visitor (VisitorId,VisitorsName,MemberId,TimeIn,TimeOut) values ('"+visitor.getVisitorId()+"','"+visitor.getVisitorsName()+"','"+visitor.getMemberId()+"','"+visitor.getTimeIn()+"','"+visitor.getTimeOut()+"')");
+                  
+        } catch (Exception e) {
+            throw new Exception(e);
+            
+        }
+    }
+    
+    public void addExpense(ExpenseInfo expense) throws Exception
+    {
+        
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            connection = DriverManager.getConnection(
+                    "jdbc:sqlserver://localhost:1433;databaseName=Hostel_Management_System;selectMethod=cursor", "sa", "123456");
+
+            
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("Insert into Expense (ExpenseId,ExpenseName,Date,Amount) values ('"+expense.getExpenseId()+"','"+expense.getExpenseName()+"','"+expense.getDate()+"',"+expense.getAmount()+")");
+                  
         } catch (Exception e) {
             throw new Exception(e);
             
@@ -407,6 +646,52 @@ public class ConnectMSSQL {
     
     }
     
+    public PackageInfo getPackageInfo(String query)
+    {
+        ArrayList<PackageInfo> database = new ArrayList();
+        
+        
+        
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            connection = DriverManager.getConnection(
+                    "jdbc:sqlserver://localhost:1433;databaseName=Hostel_Management_System;selectMethod=cursor", "sa", "123456");
+
+            //System.out.println("DATABASE NAME IS:" + connection.getMetaData().getDatabaseProductName());
+
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement
+                    .executeQuery("SELECT * FROM Package "+query);
+            
+            
+            while (resultSet.next()) {
+                
+                PackageInfo temp = new PackageInfo();
+                temp.setAc(resultSet.getInt("ac"));
+                temp.setNonAc(resultSet.getInt("nonac"));
+                temp.setB(resultSet.getInt("b"));
+                temp.setL(resultSet.getInt("l"));
+                temp.setD(resultSet.getInt("d"));
+                temp.setBl(resultSet.getInt("bl"));
+                temp.setBd(resultSet.getInt("bd"));
+                temp.setLd(resultSet.getInt("ld"));
+                temp.setBld(resultSet.getInt("bld"));
+                
+                
+                
+               
+                database.add(temp);
+              
+            }
+           
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return database.get(0);
+    
+    }
+    
     
     
     public void update(String dbName,String query)
@@ -416,7 +701,7 @@ public class ConnectMSSQL {
             connection = DriverManager.getConnection(
                     "jdbc:sqlserver://localhost:1433;databaseName=Hostel_Management_System;selectMethod=cursor", "sa", "123456");
 
-            //System.out.println("DATABASE NAME IS:" + connection.getMetaData().getDatabaseProductName());
+            //System.out.println("DATABASE NAME IS:" 3+ connection.getMetaData().getDatabaseProductName());
 
             Statement statement = connection.createStatement();
             statement.executeUpdate("Update "+dbName+" Set "+query);
@@ -488,7 +773,7 @@ public class ConnectMSSQL {
             
             connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=Hostel_Management_System;selectMethod=cursor", "sa", "123456");
 
-            PreparedStatement st = connection.prepareStatement("Update Member Set Name = ? ,FathersName = ? ,MothersName = ?,Email = ?,ContactNo = ?,DateOfBirth = ?,BloodGroup = ?,Address = ?,Profession = ?,GuardianContactNo = ?,SeatNo = ?,MealType = ?,Picture = ?,Due = ? where MemberId  = ?");
+            PreparedStatement st = connection.prepareStatement("Update Member Set Name = ? ,FathersName = ? ,MothersName = ?,Email = ?,ContactNo = ?,DateOfBirth = ?,BloodGroup = ?,Address = ?,Profession = ?,GuardianContactNo = ?,SeatNo = ?,MealType = ?,Picture = ?,Due = ?,LastDueMonth= ? where MemberId  = ?");
             
             
             st.setString(1,user.getName());
@@ -505,7 +790,40 @@ public class ConnectMSSQL {
             st.setString(12, user.getMealType());
             st.setBytes(13, user.getImage());
             st.setInt(14, user.getDue());
-            st.setString(15, user.getMemberId());
+            st.setString(15, user.getLastDueMonth());
+            st.setString(16, user.getMemberId());
+            st.executeUpdate();
+            
+        }
+        catch(Exception e)
+        {
+            throw new Exception(e);
+        }
+    }
+    
+    public void updateEmployee(EmployeeInfo user) throws Exception
+    {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            
+            connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=Hostel_Management_System;selectMethod=cursor", "sa", "123456");
+
+            PreparedStatement st = connection.prepareStatement("Update Employee Set Name = ? ,FathersName = ? ,MothersName = ?,Email = ?,ContactNo = ?,DateOfBirth = ?,BloodGroup = ?,Address = ?,Post = ?,GuardianContactNo = ?,Salary = ?,Picture = ? where EmployeeId  = ?");
+            
+            
+            st.setString(1,user.getName());
+            st.setString(2,user.getFathersName());
+            st.setString(3, user.getMothersName());
+            st.setString(4, user.getEmail());
+            st.setString(5, user.getContactNo());
+            st.setString(6, user.getDateOfBirth());
+            st.setString(7, user.getBloodGroup());
+            st.setString(8, user.getAddress());
+            st.setString(9, user.getPost());
+            st.setString(10, user.getGuardianContactNo());
+            st.setInt(11, user.getSalary());
+            st.setBytes(12, user.getImage());
+            st.setString(13, user.getEmployeeId());
             st.executeUpdate();
             
         }

@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package database_project2;
 
-
-public class MemberInfo {
-    
+public class EmployeeInfo {
     private String name;
-    private String memberId;
+    private String employeeId;
     private String fathersName;
     private String mothersName;
     private String email;
@@ -18,17 +11,17 @@ public class MemberInfo {
     private String dateOfBirth;
     private String bloodGroup;
     private String address;
-    private String profession;
     private String guardianContactNo;
-    private String seatNo;
-    private String mealType;
-    private int due;
+    private String post;
+    private int Salary;
     private byte[] image;
-    private String lastDueMonth;
+    
+     public EmployeeInfo() {
+    }
 
-    public MemberInfo(String name, String memberId, String fathersName, String mothersName, String email, String contactNo, String dateOfBirth, String bloodGroup, String address, String profession, String guardianContactNo, String seatNo, String mealType, int due, byte[] image, String lastDueMonth) {
+    public EmployeeInfo(String name, String employeeId, String fathersName, String mothersName, String email, String contactNo, String dateOfBirth, String bloodGroup, String address, String guardianContactNo, String post, int Salary, byte[] image) {
         this.name = name;
-        this.memberId = memberId;
+        this.employeeId = employeeId;
         this.fathersName = fathersName;
         this.mothersName = mothersName;
         this.email = email;
@@ -36,35 +29,10 @@ public class MemberInfo {
         this.dateOfBirth = dateOfBirth;
         this.bloodGroup = bloodGroup;
         this.address = address;
-        this.profession = profession;
         this.guardianContactNo = guardianContactNo;
-        this.seatNo = seatNo;
-        this.mealType = mealType;
-        this.due = due;
+        this.post = post;
+        this.Salary = Salary;
         this.image = image;
-        this.lastDueMonth = lastDueMonth;
-    }
-    
-    public MemberInfo()
-    {
-        ;
-    }
-
-    public String getLastDueMonth() {
-        return lastDueMonth;
-    }
-
-    public void setLastDueMonth(String lastDueMonth) {
-        this.lastDueMonth = lastDueMonth;
-    }
-    
-
-    public int getDue() {
-        return due;
-    }
-
-    public void setDue(int due) {
-        this.due = due;
     }
 
     public String getName() {
@@ -75,12 +43,12 @@ public class MemberInfo {
         this.name = name;
     }
 
-    public String getMemberId() {
-        return memberId;
+    public String getEmployeeId() {
+        return employeeId;
     }
 
-    public void setMemberId(String memberId) {
-        this.memberId = memberId;
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
     }
 
     public String getFathersName() {
@@ -122,7 +90,7 @@ public class MemberInfo {
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-    
+
     public String getBloodGroup() {
         return bloodGroup;
     }
@@ -139,14 +107,6 @@ public class MemberInfo {
         this.address = address;
     }
 
-    public String getProfession() {
-        return profession;
-    }
-
-    public void setProfession(String profession) {
-        this.profession = profession;
-    }
-
     public String getGuardianContactNo() {
         return guardianContactNo;
     }
@@ -155,20 +115,20 @@ public class MemberInfo {
         this.guardianContactNo = guardianContactNo;
     }
 
-    public String getSeatNo() {
-        return seatNo;
+    public String getPost() {
+        return post;
     }
 
-    public void setSeatNo(String seatNo) {
-        this.seatNo = seatNo;
+    public void setPost(String post) {
+        this.post = post;
     }
 
-    public String getMealType() {
-        return mealType;
+    public int getSalary() {
+        return Salary;
     }
 
-    public void setMealType(String mealType) {
-        this.mealType = mealType;
+    public void setSalary(int Salary) {
+        this.Salary = Salary;
     }
 
     public byte[] getImage() {
@@ -178,5 +138,6 @@ public class MemberInfo {
     public void setImage(byte[] image) {
         this.image = image;
     }
-    
+     
+     
 }

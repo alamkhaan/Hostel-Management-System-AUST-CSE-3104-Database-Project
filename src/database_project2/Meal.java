@@ -18,8 +18,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 
 
 public class Meal extends javax.swing.JFrame {
@@ -41,8 +43,15 @@ public class Meal extends javax.swing.JFrame {
     {
         this.AdminId = AdminId;
         initComponents();
+        jTable1.setDefaultEditor(Object.class, null);
         arr  = new ConnectMSSQL().getMealInfo("");
         clearTable(jTable1);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.LEFT );
+        for(int x=0;x<4;x++){
+         jTable1.getColumnModel().getColumn(x).setCellRenderer( centerRenderer );
+        }
+        totalMeal.setText(Integer.toString(arr.size()));
         
         if((modIndex+1)*16>=arr.size())
             currentLength = arr.size()%16;
@@ -56,7 +65,7 @@ public class Meal extends javax.swing.JFrame {
             jTable1.getModel().setValueAt(arr.get(i).getMemberId(),i, 1);
             jTable1.getModel().setValueAt(arr.get(i).getMealType(),i, 2);
             jTable1.getModel().setValueAt(arr.get(i).getNoOfMeal(),i, 3);
-            jTable1.getModel().setValueAt("Delete", i,4);             
+            jTable1.getModel().setValueAt("Undo", i,4);             
         }
         
         jTable1.getColumn("Action").setCellRenderer(new ButtonRenderer(currentLength));
@@ -90,7 +99,7 @@ public class Meal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        totalMeal = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         prevButton = new javax.swing.JButton();
         nextButton = new javax.swing.JButton();
@@ -100,7 +109,7 @@ public class Meal extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1050, 570));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(15, 19, 52));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -166,6 +175,14 @@ public class Meal extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable1MousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 1000, 270));
@@ -174,8 +191,9 @@ public class Meal extends javax.swing.JFrame {
         jLabel2.setText("Total Meal:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 480, -1, -1));
 
-        jTextField1.setText("jTextField1");
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 480, 180, 30));
+        totalMeal.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        totalMeal.setEnabled(false);
+        getContentPane().add(totalMeal, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 480, 180, 30));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setText("Add Meal");
@@ -231,7 +249,7 @@ public class Meal extends javax.swing.JFrame {
            jTable1.getModel().setValueAt(arr.get(i).getMemberId(),i, 1);
            jTable1.getModel().setValueAt(arr.get(i).getMealType(),i, 2);
            jTable1.getModel().setValueAt(arr.get(i).getNoOfMeal(),i, 3);
-           jTable1.getModel().setValueAt("Delete", i,4);  
+           jTable1.getModel().setValueAt("Undo", i,4);  
              
         }
     }//GEN-LAST:event_prevButtonActionPerformed
@@ -253,10 +271,39 @@ public class Meal extends javax.swing.JFrame {
            jTable1.getModel().setValueAt(arr.get(i).getMemberId(),i, 1);
            jTable1.getModel().setValueAt(arr.get(i).getMealType(),i, 2);
            jTable1.getModel().setValueAt(arr.get(i).getNoOfMeal(),i, 3);
-           jTable1.getModel().setValueAt("Delete", i,4);  
+           jTable1.getModel().setValueAt("Undo", i,4);  
 
         }
     }//GEN-LAST:event_nextButtonActionPerformed
+
+    private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1MousePressed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int row = jTable1.getSelectedRow();
+        int col = jTable1.getSelectedColumn();
+        
+        if(col==4 && row<currentLength)
+        {
+            int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to undo this Meal?", "Confirm", JOptionPane.OK_CANCEL_OPTION);
+            if(x==0)
+            {
+                try
+                {
+                    new ConnectMSSQL().delete("Meal"," where MealId = '"+jTable1.getValueAt(row, 0)+"'");
+                    JOptionPane.showMessageDialog(this, "Meal Undo Succesfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    new Meal(this.AdminId).setVisible(true);
+                    this.setVisible(false);
+                
+                }
+                catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(this, "Error Occured", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -301,8 +348,8 @@ public class Meal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton nextButton;
     private javax.swing.JButton prevButton;
+    private javax.swing.JTextField totalMeal;
     // End of variables declaration//GEN-END:variables
 }

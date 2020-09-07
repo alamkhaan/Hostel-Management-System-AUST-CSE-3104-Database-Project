@@ -42,9 +42,10 @@ public class FirstPage {
         } 
         catch (Exception e) { 
         } 
-        load.setVisible(false);
+        
         Login log = new Login();
         log.setVisible(true);
+        load.setVisible(false);
     
     }
     

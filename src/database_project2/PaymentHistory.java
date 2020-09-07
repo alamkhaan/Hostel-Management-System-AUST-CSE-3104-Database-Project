@@ -11,13 +11,13 @@
 package database_project2;
 
 import com.toedter.calendar.JTextFieldDateEditor;
-import static database_project2.Member.clearTable;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 public class PaymentHistory extends javax.swing.JFrame {
@@ -36,7 +36,8 @@ public class PaymentHistory extends javax.swing.JFrame {
         this.AdminId = AdminId;
         initComponents();
         JTextFieldDateEditor editor = (JTextFieldDateEditor) searchByDate.getDateEditor();editor.setEnabled(false);
-        arr = new ConnectMSSQL().getPaymentInfo("");
+        arr = new ConnectMSSQL().getPaymentInfo("ORDER BY PaymentId desc");
+        jTable1.setDefaultEditor(Object.class, null);
         clearTable(jTable1);
         
         if((modIndex+1)*16>=arr.size())
@@ -86,6 +87,16 @@ public class PaymentHistory extends javax.swing.JFrame {
         totalPaymentToday.setText(Integer.toString(dailyPayment));
         totalMonthlyPayment.setText(Integer.toString(monthlyPayment));
     }
+    public static void clearTable(final JTable table) 
+    {
+        for (int i = 0; i < table.getRowCount(); i++) 
+        {
+            for(int j = 0; j < table.getColumnCount(); j++) 
+            {
+                table.setValueAt("", i, j);
+            }   
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -118,7 +129,7 @@ public class PaymentHistory extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1050, 570));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(15, 19, 52));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -200,6 +211,11 @@ public class PaymentHistory extends javax.swing.JFrame {
 
         totalPaymentToday.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         totalPaymentToday.setEnabled(false);
+        totalPaymentToday.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totalPaymentTodayActionPerformed(evt);
+            }
+        });
         getContentPane().add(totalPaymentToday, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 440, 200, 30));
 
         searchByMemberId.addActionListener(new java.awt.event.ActionListener() {
@@ -230,6 +246,11 @@ public class PaymentHistory extends javax.swing.JFrame {
         getContentPane().add(searchById, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 130, -1));
 
         nextButton.setText("Next");
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(nextButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 460, -1, -1));
 
         prevButton.setText("Prev");
@@ -337,8 +358,58 @@ public class PaymentHistory extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
-        // TODO add your handling code here:
+        modIndex--;
+        if(modIndex==0)
+            prevButton.setVisible(false);
+        nextButton.setVisible(true);
+        clearTable(jTable1);
+        if((modIndex+1)*16>=arr.size())
+            currentLength = arr.size()%16;
+        else currentLength = 16;
+        for(int i=0;i<currentLength;i++)
+        {
+           
+            jTable1.getModel().setValueAt(arr.get(i).getPaymentId(),i, 0);
+            jTable1.getModel().setValueAt(arr.get(i).getMemberId(),i, 1);
+            jTable1.getModel().setValueAt(arr.get(i).getName(),i, 2);
+            jTable1.getModel().setValueAt(arr.get(i).getDateAndTime(),i, 3);
+            jTable1.getModel().setValueAt(arr.get(i).getAmount(),i, 4);
+            jTable1.getModel().setValueAt(arr.get(i).getAdminId(),i, 5);
+            jTable1.getModel().setValueAt("Delete", i,6);
+            
+            
+             
+        }
     }//GEN-LAST:event_prevButtonActionPerformed
+
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        modIndex++;
+        prevButton.setVisible(true);
+        if((modIndex+1)*16>=arr.size())
+        nextButton.setVisible(false);
+        clearTable(jTable1);
+        if((modIndex+1)*16>=arr.size())
+        currentLength = arr.size()%16;
+        else currentLength = 16;
+       for(int i=0;i<currentLength;i++)
+        {
+           
+            jTable1.getModel().setValueAt(arr.get(i).getPaymentId(),i, 0);
+            jTable1.getModel().setValueAt(arr.get(i).getMemberId(),i, 1);
+            jTable1.getModel().setValueAt(arr.get(i).getName(),i, 2);
+            jTable1.getModel().setValueAt(arr.get(i).getDateAndTime(),i, 3);
+            jTable1.getModel().setValueAt(arr.get(i).getAmount(),i, 4);
+            jTable1.getModel().setValueAt(arr.get(i).getAdminId(),i, 5);
+            jTable1.getModel().setValueAt("Delete", i,6);
+            
+            
+             
+        }
+    }//GEN-LAST:event_nextButtonActionPerformed
+
+    private void totalPaymentTodayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalPaymentTodayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_totalPaymentTodayActionPerformed
 
     /**
      * @param args the command line arguments

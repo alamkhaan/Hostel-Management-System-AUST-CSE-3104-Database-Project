@@ -21,6 +21,7 @@ public class LoadingPage extends javax.swing.JFrame {
     public LoadingPage() {
         initComponents();
         jBarString.setOpaque(true);
+     
         
         
     }

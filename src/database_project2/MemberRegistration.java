@@ -138,7 +138,7 @@ public class MemberRegistration extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1050, 570));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(15, 19, 52));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -399,7 +399,56 @@ public class MemberRegistration extends javax.swing.JFrame {
          }
         }
     }//GEN-LAST:event_addImageButtonActionPerformed
-
+    public int calDue(String mealType,String seatId)
+    {
+        int cost = 0;
+        PackageInfo p = new PackageInfo();
+        p = new ConnectMSSQL().getPackageInfo("");
+        if(mealType.equals("Breakfast"))
+        {
+            cost+= p.getB();
+        }
+        else if(mealType.equals("Lunch"))
+        {
+            cost+= p.getL();
+        }
+        else if(mealType.equals("Dinner"))
+        {
+            cost+= p.getD();
+        }
+        else if(mealType.equals("BreakFast+Lunch"))
+        {
+            cost+= p.getBl();
+        }
+        else if(mealType.equals("Breakfast+Dinner"))
+        {
+            cost+= p.getBd();
+        }
+        else if(mealType.equals("Lunch+Dinner"))
+        {
+            cost+= p.getLd();
+        }
+        else if(mealType.equals("Breakfast+Lunch+Dinner"))
+        {
+            cost+= p.getBld();
+        }
+        if(seatId.length()==0)
+            return cost;
+        SeatInfo s = (new ConnectMSSQL().getSeatInfo("where SeatId = '"+seatId+"'")).get(0);
+        RoomInfo r = (new ConnectMSSQL().getRoomInfo("where RoomId = '"+s.getRoomId()+"'")).get(0);
+        if(r.getType().equals("Ac"))
+        {
+            cost+= p.getAc();
+        }
+        else
+        {
+            cost+= p.getNonAc();
+        }
+            
+        
+        return cost;
+    }
+    
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         
         
@@ -461,7 +510,10 @@ public class MemberRegistration extends javax.swing.JFrame {
             user.setMealType(mealType.getSelectedItem().toString());
             String temp = seatNo.getSelectedItem().toString();
             user.setSeatNo(temp.substring(0,temp.indexOf(' ', 0)));
+            user.setLastDueMonth(f.substring(0,4)+f.substring(5,7));
+            user.setDue(calDue(user.getMealType(),user.getSeatNo()));
             Icon icon = image.getIcon();
+           
             BufferedImage bi = new BufferedImage(icon.getIconWidth(),icon.getIconHeight(),BufferedImage.TYPE_INT_RGB);
             Graphics g = bi.createGraphics();
               
@@ -519,6 +571,7 @@ public class MemberRegistration extends javax.swing.JFrame {
         email.setText("");
         footerEmail.setVisible(true);
         contactNo.setText("");
+     
         footerContact.setVisible(true);
         address.setText("");
         footerAddress.setVisible(true);
@@ -535,7 +588,7 @@ public class MemberRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void seatNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seatNoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_seatNoActionPerformed
 
     private void nameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyTyped
