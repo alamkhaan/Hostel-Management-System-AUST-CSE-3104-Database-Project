@@ -95,6 +95,7 @@ public class Employee extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1050, 570));
         setMinimumSize(new java.awt.Dimension(1050, 570));
         setPreferredSize(new java.awt.Dimension(1050, 570));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(15, 19, 52));
 
@@ -114,23 +115,24 @@ public class Employee extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(29, 29, 29)
                 .addComponent(backToHome)
-                .addGap(316, 316, 316)
+                .addGap(335, 335, 335)
                 .addComponent(jLabel1)
-                .addContainerGap(477, Short.MAX_VALUE))
+                .addContainerGap(452, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backToHome)
-                    .addComponent(jLabel1))
-                .addGap(23, 23, 23))
+                    .addComponent(jLabel1)
+                    .addComponent(backToHome))
+                .addGap(16, 16, 16))
         );
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -154,6 +156,7 @@ public class Employee extends javax.swing.JFrame {
                 "ID", "Name", "Contact No", "Blood Group", "Post", "Salary", "Action"
             }
         ));
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setMaximumSize(new java.awt.Dimension(1245, 6789));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -167,6 +170,8 @@ public class Employee extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 193, 1010, 270));
+
         searchByContact.setText("Search By Contact No");
         searchByContact.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -178,6 +183,7 @@ public class Employee extends javax.swing.JFrame {
                 searchByContactActionPerformed(evt);
             }
         });
+        getContentPane().add(searchByContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 90, 160, 30));
 
         searchBySalary.setText("Search By Salary");
         searchBySalary.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -185,6 +191,7 @@ public class Employee extends javax.swing.JFrame {
                 searchBySalaryMouseClicked(evt);
             }
         });
+        getContentPane().add(searchBySalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 140, 160, 30));
 
         searchById.setText("Search By Id");
         searchById.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -197,6 +204,7 @@ public class Employee extends javax.swing.JFrame {
                 searchByIdActionPerformed(evt);
             }
         });
+        getContentPane().add(searchById, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 90, 160, 30));
 
         searchByName.setText("Search By Name");
         searchByName.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -211,26 +219,31 @@ public class Employee extends javax.swing.JFrame {
                 searchByNameMouseReleased(evt);
             }
         });
+        getContentPane().add(searchByName, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 90, 160, 30));
 
-        reset.setBackground(new java.awt.Color(255, 153, 153));
         reset.setText("Reset");
+        reset.setBackground(new java.awt.Color(255, 153, 153));
         reset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetActionPerformed(evt);
             }
         });
+        getContentPane().add(reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 93, 80, -1));
 
         searchByBlood.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Search By Blood Group", "A+", "A-", "AB+", "AB-", "B+", "B-", "O+", "O-" }));
+        getContentPane().add(searchByBlood, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 140, 160, 30));
 
-        searchByPost.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Search By Post", "Cooker", "Others" }));
+        searchByPost.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Search By Post", "Manager", "Accountant", "Cook", "Cleaner", "Others" }));
+        getContentPane().add(searchByPost, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 140, 160, 30));
 
-        search1.setBackground(new java.awt.Color(0, 102, 153));
         search1.setText("Search");
+        search1.setBackground(new java.awt.Color(0, 102, 153));
         search1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 search1ActionPerformed(evt);
             }
         });
+        getContentPane().add(search1, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 139, 80, -1));
 
         prevButton.setText("Prev");
         prevButton.addActionListener(new java.awt.event.ActionListener() {
@@ -238,6 +251,7 @@ public class Employee extends javax.swing.JFrame {
                 prevButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(prevButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 481, 70, 20));
 
         nextButton.setText("Next");
         nextButton.addActionListener(new java.awt.event.ActionListener() {
@@ -245,6 +259,7 @@ public class Employee extends javax.swing.JFrame {
                 nextButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(nextButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 481, 70, 20));
 
         addNewEmployee.setBackground(new java.awt.Color(15, 19, 52));
         addNewEmployee.setForeground(new java.awt.Color(255, 255, 255));
@@ -284,80 +299,7 @@ public class Employee extends javax.swing.JFrame {
             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchById, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchBySalary, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchByName, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchByBlood, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchByContact, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchByPost, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(search1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(addNewEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1010, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(searchById, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(searchBySalary, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(searchByName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(searchByBlood, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(searchByContact, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(searchByPost, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(reset)
-                                .addGap(23, 23, 23)
-                                .addComponent(search1))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(addNewEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(prevButton, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 69, Short.MAX_VALUE))
-        );
+        getContentPane().add(addNewEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(826, 97, 176, 43));
 
         pack();
         setLocationRelativeTo(null);
@@ -373,10 +315,10 @@ public class Employee extends javax.swing.JFrame {
         int row = jTable1.getSelectedRow();
         int col = jTable1.getSelectedColumn();
 
-        if(col==7 && row<currentLength)
+        if(col==6 && row<currentLength)
         {
 
-            new MemberDetails(AdminId,arr.get(row+16*modIndex).getEmployeeId()).setVisible(true);
+            new EmployeeDetails(AdminId,arr.get(row+16*modIndex).getEmployeeId()).setVisible(true);
             this.setVisible(false);
         }
 

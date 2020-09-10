@@ -21,10 +21,16 @@ public class LoadingPage extends javax.swing.JFrame {
     public LoadingPage() {
         initComponents();
         jBarString.setOpaque(true);
+        
+        
+        
      
         
         
     }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,9 +49,7 @@ public class LoadingPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1050, 570));
         setMinimumSize(new java.awt.Dimension(1050, 570));
-        setPreferredSize(new java.awt.Dimension(1050, 570));
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51,150));
@@ -77,8 +81,6 @@ public class LoadingPage extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/ezgif.com-resize.gif"))); // NOI18N
-
         jBarString.setBackground(new java.awt.Color(51, 51, 51));
         jBarString.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
         jBarString.setForeground(new java.awt.Color(255, 255, 0));
@@ -99,7 +101,7 @@ public class LoadingPage extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(419, 419, 419)
                         .addComponent(jBarString, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

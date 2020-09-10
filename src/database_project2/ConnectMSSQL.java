@@ -61,10 +61,10 @@ public class ConnectMSSQL {
         
     }
     
-    public Pair<String,String> getAdminInfo(String AdminId) {
+    public ArrayList<AdminInfo> getAdminInfo(String query) {
         
-        String tempuser="",temppass="";
         
+        ArrayList<AdminInfo> database = new ArrayList();
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(
@@ -74,16 +74,20 @@ public class ConnectMSSQL {
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement
-                    .executeQuery("SELECT username,password FROM Admin where EmployeeId = '"+AdminId+"'");
+                    .executeQuery("SELECT * FROM Admin "+query);
             
             //System.out.println("parameter "+userName+" "+password);
             
             while (resultSet.next()) {
                 
-                tempuser = resultSet.getString("username").toString();
-                temppass = resultSet.getString("password").toString();
-               
-                //System.out.println(tempuser+" "+temppass)
+                AdminInfo temp = new AdminInfo();
+                temp.setUserName(resultSet.getString("username").toString());
+                temp.setPassword(resultSet.getString("password").toString());
+                temp.setEmployeeId(resultSet.getString("EmployeeID").toString());
+                temp.setAdminType(resultSet.getString("adminType").toString());
+                
+               database.add(temp);
+                
                 
             }
            
@@ -91,7 +95,7 @@ public class ConnectMSSQL {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return new Pair<String,String> (tempuser,temppass);
+        return database;
         
     }
     public ArrayList<MemberInfo> getMemberInfo(String query)
@@ -315,7 +319,28 @@ public class ConnectMSSQL {
             e.printStackTrace();
         }
     }
-    
+    public void addAdmin(AdminInfo admin) throws Exception
+    {
+        
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            connection = DriverManager.getConnection(
+                    "jdbc:sqlserver://localhost:1433;databaseName=Hostel_Management_System;selectMethod=cursor", "sa", "123456");
+
+            
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("Insert into Admin (username,password,adminType,EmployeeID) values ('"+admin.getUserName()+"','"+admin.getPassword()+"','"+admin.getAdminType()+"','"+admin.getEmployeeId()+"')");
+            
+            
+            
+           
+            
+        } catch (Exception e) {
+            throw new Exception();
+        }
+        
+        
+    }
     public void addPayment(PaymentInfo pay) throws Exception
     {
         

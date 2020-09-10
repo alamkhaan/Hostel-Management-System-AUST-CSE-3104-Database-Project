@@ -136,13 +136,14 @@ public class MemberRegistration extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
         setMinimumSize(new java.awt.Dimension(1050, 570));
+        setPreferredSize(new java.awt.Dimension(1050, 570));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(15, 19, 52));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Registration");
+        jLabel1.setText("Member Registration");
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -448,7 +449,16 @@ public class MemberRegistration extends javax.swing.JFrame {
         
         return cost;
     }
-    
+    public boolean validate(String email)
+    {
+        int x = email.indexOf("@");
+        if(x==-1)
+            return false;
+        x = email.indexOf(".com", x);
+        if(x==-1)
+            return false;
+        return true;
+    }
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         
         
@@ -468,6 +478,10 @@ public class MemberRegistration extends javax.swing.JFrame {
         else if(email.getText().length()==0)
         {
             JOptionPane.showMessageDialog(this, "Email is Empty","Error",JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!validate(email.getText()))
+        {
+            JOptionPane.showMessageDialog(this, "Email is not valid","Error",JOptionPane.ERROR_MESSAGE);
         }
         else if(contactNo.getText().length()==0)
         {
@@ -489,6 +503,7 @@ public class MemberRegistration extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this, "No Empty Seat Exist","Error",JOptionPane.ERROR_MESSAGE);
         }
+        
         else
         {
             MemberInfo user = new MemberInfo();
@@ -533,18 +548,34 @@ public class MemberRegistration extends javax.swing.JFrame {
                 e.printStackTrace();
             }
             user.setImage(baos.toByteArray());
-            try
+            ArrayList<MemberInfo> arr,arr2 = new ArrayList();
+            arr = new ConnectMSSQL().getMemberInfo("where Email = '"+user.getEmail()+"'");
+            arr2 = new ConnectMSSQL().getMemberInfo("where ContactNo = '"+user.getContactNo()+"'");
+            if(arr.size()>0)
             {
-                new ConnectMSSQL().addMember(user);
-                new ConnectMSSQL().update("Seat", "IsEmpty=0 , MemberId = '"+user.getMemberId()+"' where SeatId = '"+user.getSeatNo()+"'");
-                new ConnectMSSQL().update("Room", "EmptyBed=EmptyBed-1 where RoomId='"+user.getSeatNo().substring(0, user.getSeatNo().length()-1)+"'");
-                new ConnectMSSQL().update("SerialNo", "MemberSerial=MemberSerial+1");
-                resetButtonActionPerformed(evt);
-                JOptionPane.showMessageDialog(this, "Member Added Successfully","Added",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Email Already Exist","Error",JOptionPane.ERROR_MESSAGE);
             }
-            catch(Exception e)
+            else if(arr2.size()>0)
             {
-                JOptionPane.showMessageDialog(this, "Error Occured","Error",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ContactNo Already Exist","Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                
+                
+            try
+                {
+                    new ConnectMSSQL().addMember(user);
+                    new ConnectMSSQL().update("Seat", "IsEmpty=0 , MemberId = '"+user.getMemberId()+"' where SeatId = '"+user.getSeatNo()+"'");
+                    new ConnectMSSQL().update("Room", "EmptyBed=EmptyBed-1 where RoomId='"+user.getSeatNo().substring(0, user.getSeatNo().length()-1)+"'");
+                    new ConnectMSSQL().update("SerialNo", "MemberSerial=MemberSerial+1");
+                    resetButtonActionPerformed(evt);
+                    JOptionPane.showMessageDialog(this, "Member Added Successfully","Added",JOptionPane.INFORMATION_MESSAGE);
+                }
+                catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(this, "Error Occured","Error",JOptionPane.WARNING_MESSAGE);
+                }
             }
             
             
@@ -632,7 +663,7 @@ public class MemberRegistration extends javax.swing.JFrame {
         evt.consume();
         }
         
-        if(contactNo.getText().length()==0 && evt.getKeyChar()==KeyEvent.VK_BACK_SPACE)
+        if((contactNo.getText().length()==0) && (evt.getKeyChar()==KeyEvent.VK_BACK_SPACE || evt.getKeyChar()==KeyEvent.VK_DELETE || !((evt.getKeyChar() >= '0') && (evt.getKeyChar()<= '9'))))
             footerContact.setVisible(true);
         else
             footerContact.setVisible(false);
@@ -660,7 +691,7 @@ public class MemberRegistration extends javax.swing.JFrame {
         getToolkit().beep();
         evt.consume();
         }
-        if(gContactNo.getText().length()==0  && evt.getKeyChar()==KeyEvent.VK_BACK_SPACE)
+        if((gContactNo.getText().length()==0) && (evt.getKeyChar()==KeyEvent.VK_BACK_SPACE || evt.getKeyChar()==KeyEvent.VK_DELETE || !((evt.getKeyChar() >= '0') && (evt.getKeyChar()<= '9'))))
             footerGContact.setVisible(true);
         else
             footerGContact.setVisible(false);

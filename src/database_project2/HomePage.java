@@ -28,30 +28,7 @@ public class HomePage extends javax.swing.JFrame {
         this.AdminId  = AdminId;
         initComponents();
         
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
-        Date date = new Date();  
-        String f = formatter.format(date);
-        f = f.substring(0,4)+f.substring(5,7);
-        ConnectMSSQL ms = new ConnectMSSQL();
-        ArrayList<MemberInfo> arr =  ms.getMemberInfo("");
-        MemberInfo m = new MemberInfo();
-        for(int i=0;i<arr.size();i++)
-        {
-            m  =arr.get(i);
-            int x = monthDiff(f,m.getLastDueMonth())*new MemberRegistration().calDue(m.getMealType(), m.getSeatNo());
-            m.setDue(m.getDue()+x);
-            m.setLastDueMonth(f);
-            try
-            {
-                ms.updateMember(m);
-            }
-            catch(Exception e)
-            {
-                
-            }
-            
-            
-        }
+        
     }
     
     public int monthDiff(String query1,String query2)

@@ -6,6 +6,8 @@
 package database_project2;
 
 import java.awt.Color;
+import javafx.util.Pair;
+import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
@@ -20,6 +22,7 @@ public class Dashboard extends javax.swing.JFrame {
      * Creates new form Dashboard
      */
     String AdminId;
+    AdminInfo admin;
     
     public Dashboard() {
         initComponents();
@@ -32,6 +35,9 @@ public class Dashboard extends javax.swing.JFrame {
         this.AdminId = AdminId;
         DashBoard2 temp = new DashBoard2();
         jDesktopPane1.add(temp).setVisible(true);
+        admin  = (new ConnectMSSQL().getAdminInfo("where EmployeeId = '"+AdminId+"'")).get(0);
+        
+        
     }
 
     /**
@@ -56,7 +62,7 @@ public class Dashboard extends javax.swing.JFrame {
         accessPanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        developerPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         packagePanel = new javax.swing.JPanel();
@@ -241,9 +247,20 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(0, 5, Short.MAX_VALUE))
         );
 
-        jPanel7.setBackground(new java.awt.Color(15, 19, 52));
-        jPanel7.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel7.setPreferredSize(new java.awt.Dimension(270, 70));
+        developerPanel.setBackground(new java.awt.Color(15, 19, 52));
+        developerPanel.setForeground(new java.awt.Color(255, 255, 255));
+        developerPanel.setPreferredSize(new java.awt.Dimension(270, 70));
+        developerPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                developerPanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                developerPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                developerPanelMouseExited(evt);
+            }
+        });
 
         jLabel6.setBackground(new java.awt.Color(15, 19, 52));
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
@@ -253,24 +270,24 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel12.setBackground(new java.awt.Color(15, 19, 52));
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/group.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout developerPanelLayout = new javax.swing.GroupLayout(developerPanel);
+        developerPanel.setLayout(developerPanelLayout);
+        developerPanelLayout.setHorizontalGroup(
+            developerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, developerPanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        developerPanelLayout.setVerticalGroup(
+            developerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(developerPanelLayout.createSequentialGroup()
+                .addGroup(developerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 15, Short.MAX_VALUE))
+                .addGap(0, 5, Short.MAX_VALUE))
         );
 
         packagePanel.setBackground(new java.awt.Color(15, 19, 52));
@@ -324,7 +341,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(historyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(accessPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(packagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(developerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,8 +356,8 @@ public class Dashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(accessPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 177, Short.MAX_VALUE))
+                .addComponent(developerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 187, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, -1));
@@ -409,7 +426,15 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_packagePanelMouseExited
 
     private void historyPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historyPanelMouseClicked
-        // TODO add your handling code here:
+        if(admin.getAdminType().equals("Moderator"))
+        {
+            JOptionPane.showMessageDialog(this, "Sorry!\nModerator Cannot Access this Page","Error",JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            
+            
+        }
     }//GEN-LAST:event_historyPanelMouseClicked
 
     private void historyPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historyPanelMouseEntered
@@ -421,7 +446,16 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_historyPanelMouseExited
 
     private void accessPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accessPanelMouseClicked
-        // TODO add your handling code here:
+        if(admin.getAdminType().equals("Moderator"))
+        {
+            JOptionPane.showMessageDialog(this, "Sorry!\nModerator Cannot Access this Page","Error",JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            jDesktopPane1.removeAll();
+            AccessControl temp = new AccessControl();
+            jDesktopPane1.add(temp).setVisible(true);
+        }
     }//GEN-LAST:event_accessPanelMouseClicked
 
     private void accessPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accessPanelMouseEntered
@@ -431,6 +465,18 @@ public class Dashboard extends javax.swing.JFrame {
     private void accessPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accessPanelMouseExited
         accessPanel.setBorder(new EmptyBorder(0,0,0,0));
     }//GEN-LAST:event_accessPanelMouseExited
+
+    private void developerPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_developerPanelMouseClicked
+        
+    }//GEN-LAST:event_developerPanelMouseClicked
+
+    private void developerPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_developerPanelMouseEntered
+        developerPanel.setBorder(new MatteBorder(5,5,5,5,new Color(153,153,153)));
+    }//GEN-LAST:event_developerPanelMouseEntered
+
+    private void developerPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_developerPanelMouseExited
+        developerPanel.setBorder(new EmptyBorder(0,0,0,0));
+    }//GEN-LAST:event_developerPanelMouseExited
 
     /**
      * @param args the command line arguments
@@ -470,6 +516,7 @@ public class Dashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel accessPanel;
     private javax.swing.JPanel dashBoradPanel;
+    private javax.swing.JPanel developerPanel;
     private javax.swing.JPanel historyPanel;
     private javax.swing.JPanel homePanel;
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -486,7 +533,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel packagePanel;
     // End of variables declaration//GEN-END:variables
 }

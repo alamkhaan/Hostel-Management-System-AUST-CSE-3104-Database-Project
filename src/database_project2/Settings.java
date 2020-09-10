@@ -6,6 +6,7 @@
 package database_project2;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javafx.util.Pair;
 import javax.swing.JOptionPane;
 
@@ -23,11 +24,11 @@ public class Settings extends javax.swing.JFrame {
     public Settings(String AdminId) {
         this.AdminId = AdminId;
         initComponents();
+        ArrayList<AdminInfo> arr  =new ConnectMSSQL().getAdminInfo("where EmployeeId = '"+AdminId+"'");
         
-        Pair<String,String> pair = new ConnectMSSQL().getAdminInfo(AdminId);
-        userName.setText(pair.getKey());
-        password.setText(pair.getValue());
-        confirmPassword.setText(pair.getValue());
+        userName.setText(arr.get(0).getUserName());
+        password.setText(arr.get(0).getPassword());
+        confirmPassword.setText(arr.get(0).getPassword());
         
         
     }
@@ -169,8 +170,12 @@ public class Settings extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        new Login().setVisible(true);
-        this.setVisible(false);
+        int query = JOptionPane.showConfirmDialog(this, "Are you sure you want to Log Out?","Confirm", JOptionPane.OK_CANCEL_OPTION);
+        if(query==0)
+        {
+            new Login().setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed

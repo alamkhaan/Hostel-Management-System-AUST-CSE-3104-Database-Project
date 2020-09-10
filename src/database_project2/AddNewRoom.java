@@ -58,10 +58,10 @@ public class AddNewRoom extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         floor = new javax.swing.JTextField();
         roomNo = new javax.swing.JTextField();
-        buildingNo = new javax.swing.JTextField();
         resetButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
-        totalBed = new javax.swing.JComboBox<>();
+        buildingNo = new javax.swing.JComboBox<>();
+        totalBed1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
@@ -70,9 +70,9 @@ public class AddNewRoom extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(15, 19, 52));
 
+        jLabel1.setText("Add New Room");
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Add New Room");
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -112,16 +112,16 @@ public class AddNewRoom extends javax.swing.JFrame {
         jLabel3.setText("Total Bed:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Select Type:");
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("Room No:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, -1, 20));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setText("Building No:");
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, -1));
 
         buttonGroup1.add(jRadioButton1);
@@ -151,18 +151,6 @@ public class AddNewRoom extends javax.swing.JFrame {
         });
         getContentPane().add(roomNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 360, 40));
 
-        buildingNo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buildingNoActionPerformed(evt);
-            }
-        });
-        buildingNo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                buildingNoKeyTyped(evt);
-            }
-        });
-        getContentPane().add(buildingNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 360, 40));
-
         resetButton.setText("Reset");
         resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,8 +167,11 @@ public class AddNewRoom extends javax.swing.JFrame {
         });
         getContentPane().add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, 120, 30));
 
-        totalBed.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "One", "Two", "Three", "Four", "Five" }));
-        getContentPane().add(totalBed, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 360, 40));
+        buildingNo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "1", "2", "3", "4", "5", "6", "7" }));
+        getContentPane().add(buildingNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 360, 40));
+
+        totalBed1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "One", "Two", "Three", "Four", "Five" }));
+        getContentPane().add(totalBed1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 360, 40));
 
         pack();
         setLocationRelativeTo(null);
@@ -192,25 +183,11 @@ public class AddNewRoom extends javax.swing.JFrame {
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         buttonGroup1.clearSelection();
-        buildingNo.setText("");
+        buildingNo.setSelectedIndex(0);
         floor.setText("");
         roomNo.setText("");
-        totalBed.setSelectedIndex(0);
+        buildingNo.setSelectedIndex(0);
     }//GEN-LAST:event_resetButtonActionPerformed
-
-    private void buildingNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buildingNoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buildingNoActionPerformed
-
-    private void buildingNoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buildingNoKeyTyped
-        char c = evt.getKeyChar();
-        if (!((c >= '0') && (c <= '9') ||
-         (c == KeyEvent.VK_BACK_SPACE) ||
-         (c == KeyEvent.VK_DELETE))) {
-        getToolkit().beep();
-        evt.consume();
-      }
-    }//GEN-LAST:event_buildingNoKeyTyped
 
     private void floorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_floorKeyTyped
         char c = evt.getKeyChar();
@@ -233,9 +210,9 @@ public class AddNewRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_roomNoKeyTyped
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        if(buildingNo.getText().length()==0)
+        if(buildingNo.getSelectedIndex()==0)
         {
-            JOptionPane.showMessageDialog(this,"Building No is Empty", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Building No is not Set", "Warning", JOptionPane.WARNING_MESSAGE);
         }
         else if(floor.getText().length()==0)
         {
@@ -249,13 +226,13 @@ public class AddNewRoom extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this,"Type is not Selected", "Warning", JOptionPane.WARNING_MESSAGE);
         }
-        else if(totalBed.getSelectedIndex()==0)
+        else if(buildingNo.getSelectedIndex()==0)
         {
             JOptionPane.showMessageDialog(this,"Total Bed is Empty", "Warning", JOptionPane.WARNING_MESSAGE);
         }
         else
         {
-            String query = buildingNo.getText()+(floor.getText().length()>1 ? floor.getText() : "0"+floor.getText()) +(roomNo.getText().length()>1 ? roomNo.getText() : "0"+roomNo.getText());
+            String query = buildingNo.getSelectedItem().toString()+(floor.getText().length()>1 ? floor.getText() : "0"+floor.getText()) +(roomNo.getText().length()>1 ? roomNo.getText() : "0"+roomNo.getText());
             ArrayList <RoomInfo> data = new ArrayList();
             
             data  =new ConnectMSSQL().getRoomInfo("where RoomId='"+query+"'");
@@ -267,12 +244,12 @@ public class AddNewRoom extends javax.swing.JFrame {
             else
             {
                 RoomInfo room  =new RoomInfo();
-                room.setBuildingNo(buildingNo.getText());
+                room.setBuildingNo(buildingNo.getSelectedItem().toString());
                 room.setRoomId(query);
                 room.setFloor(floor.getText());
                 room.setType(jRadioButton1.isSelected() ? "Ac" : "Non-Ac");
-                room.setTotalBed(totalBed.getSelectedIndex());
-                room.setEmptyBed(totalBed.getSelectedIndex());
+                room.setTotalBed(buildingNo.getSelectedIndex());
+                room.setEmptyBed(buildingNo.getSelectedIndex());
                 new ConnectMSSQL().addRoom(room);
                 JOptionPane.showMessageDialog(this,"Room added Successfully");
                 resetButtonActionPerformed(evt);
@@ -325,7 +302,7 @@ public class AddNewRoom extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
-    private javax.swing.JTextField buildingNo;
+    private javax.swing.JComboBox<String> buildingNo;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField floor;
     private javax.swing.JLabel jLabel1;
@@ -340,6 +317,6 @@ public class AddNewRoom extends javax.swing.JFrame {
     private javax.swing.JButton resetButton;
     private javax.swing.JTextField roomNo;
     private javax.swing.JButton saveButton;
-    private javax.swing.JComboBox<String> totalBed;
+    private javax.swing.JComboBox<String> totalBed1;
     // End of variables declaration//GEN-END:variables
 }

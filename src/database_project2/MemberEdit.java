@@ -53,7 +53,7 @@ public class MemberEdit extends javax.swing.JFrame {
      */
     String AdminId;
     MemberInfo user;
-    public MemberEdit(MemberInfo user,String adminId) {
+    public MemberEdit(MemberInfo user,String AdminId) {
         this.AdminId = AdminId;
         this.user  = user;
         initComponents();
@@ -177,9 +177,9 @@ public class MemberEdit extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(15, 19, 52));
 
+        jLabel1.setText("Update Member Info");
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Update Info");
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -342,8 +342,8 @@ public class MemberEdit extends javax.swing.JFrame {
         });
         getContentPane().add(gContactNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 340, 190, 30));
 
-        updateButton.setBackground(new java.awt.Color(0, 51, 255));
         updateButton.setText("Update");
+        updateButton.setBackground(new java.awt.Color(0, 51, 255));
         updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateButtonActionPerformed(evt);

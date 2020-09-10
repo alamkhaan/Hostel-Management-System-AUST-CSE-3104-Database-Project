@@ -91,38 +91,38 @@ public class Payment extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(backButton)
                     .addComponent(jLabel1))
                 .addGap(28, 28, 28))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 90));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 80));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Name:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 100, 30));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 100, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Amount:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 100, 30));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 100, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("Due:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 100, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 100, 30));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("Member Id:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, -1, 30));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, -1, 30));
 
         due.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         due.setEnabled(false);
-        getContentPane().add(due, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 370, 40));
+        getContentPane().add(due, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 300, 40));
 
         name.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         name.setEnabled(false);
-        getContentPane().add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 370, 40));
+        getContentPane().add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 300, 40));
 
         amount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +134,7 @@ public class Payment extends javax.swing.JFrame {
                 amountKeyTyped(evt);
             }
         });
-        getContentPane().add(amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, 370, 40));
+        getContentPane().add(amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 300, 40));
 
         memberId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -144,31 +144,40 @@ public class Payment extends javax.swing.JFrame {
                 memberIdKeyTyped(evt);
             }
         });
-        getContentPane().add(memberId, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 370, 40));
+        getContentPane().add(memberId, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 300, 40));
 
+        resetButton.setBackground(new java.awt.Color(255, 51, 0));
+        resetButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        resetButton.setForeground(new java.awt.Color(255, 255, 255));
         resetButton.setText("Reset");
         resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 460, 100, 40));
+        getContentPane().add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 470, 80, 30));
 
+        submitButton.setBackground(new java.awt.Color(15, 19, 52));
+        submitButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        submitButton.setForeground(new java.awt.Color(255, 255, 255));
         submitButton.setText("Submit");
         submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 100, 40));
+        getContentPane().add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, 80, 30));
 
+        paymentHistoryButton.setBackground(new java.awt.Color(15, 19, 52));
+        paymentHistoryButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        paymentHistoryButton.setForeground(new java.awt.Color(255, 255, 255));
         paymentHistoryButton.setText("Payment History");
         paymentHistoryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 paymentHistoryButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(paymentHistoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 100, 150, 50));
+        getContentPane().add(paymentHistoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, 140, 40));
 
         pack();
         setLocationRelativeTo(null);
