@@ -56,7 +56,9 @@ public class Settings extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1050, 570));
         setMinimumSize(new java.awt.Dimension(1050, 570));
+        setPreferredSize(new java.awt.Dimension(1050, 570));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(15, 19, 52));

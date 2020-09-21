@@ -208,8 +208,8 @@ public class Visitor extends javax.swing.JFrame {
         });
         getContentPane().add(prevButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, -1, -1));
 
-        searchButton.setBackground(new java.awt.Color(51, 51, 255));
         searchButton.setText("Search");
+        searchButton.setBackground(new java.awt.Color(51, 51, 255));
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);

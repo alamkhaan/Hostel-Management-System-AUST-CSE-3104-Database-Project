@@ -14,7 +14,9 @@ import static database_project2.PaymentHistory.clearTable;
 import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -43,15 +45,10 @@ public class Expense extends javax.swing.JFrame {
         for(int x=0;x<4;x++){
          jTable1.getColumnModel().getColumn(x).setCellRenderer( centerRenderer );
         }
-        LocalDate currentdate = LocalDate.now();
-        
-        arr = new ConnectMSSQL().getExpenseInfo("where date like '"+currentdate.getMonth()+"%"+currentdate.getYear()+"'");
-        int total = 0;
-        for(int i=0;i<arr.size();i++)
-        {
-            total+= arr.get(i).getAmount();
-        }
-        monthlyExpense.setText(Integer.toString(total));
+        LocalDate currentdate = LocalDate.now();       
+        Calendar c = Calendar.getInstance();
+        String month = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.ENGLISH );
+        monthlyExpense.setText(new ConnectMSSQL().getValue("Select SUM(Amount) from Expense where Date Like '"+month+"%"+currentdate.getYear()+"'"));
         
         
         arr.clear();

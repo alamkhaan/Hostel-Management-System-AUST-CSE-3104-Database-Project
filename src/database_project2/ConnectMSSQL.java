@@ -111,7 +111,7 @@ public class ConnectMSSQL {
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement
-                    .executeQuery("SELECT * FROM MEMBER "+query);
+                    .executeQuery("SELECT * FROM MEMBER "+query+" Order by MemberId desc");
             
             
             while (resultSet.next()) {
@@ -171,7 +171,7 @@ public class ConnectMSSQL {
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement
-                    .executeQuery("SELECT * FROM Employee "+query);
+                    .executeQuery("SELECT * FROM Employee "+query+" Order by EmployeeId desc");
             
             
             while (resultSet.next()) {
@@ -232,7 +232,7 @@ public class ConnectMSSQL {
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement
-                    .executeQuery("SELECT * FROM Room "+query);
+                    .executeQuery("SELECT * FROM Room "+query+" Order by RoomId desc");
             
             
             while (resultSet.next()) {
@@ -273,7 +273,7 @@ public class ConnectMSSQL {
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement
-                    .executeQuery("SELECT * FROM Payment "+query);
+                    .executeQuery("SELECT * FROM Payment "+query+"  Order by PaymentId desc");
             
             
             while (resultSet.next()) {
@@ -476,7 +476,7 @@ public class ConnectMSSQL {
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement
-                    .executeQuery("SELECT * FROM Meal "+query);
+                    .executeQuery("SELECT * FROM Meal "+query+" Order by MealId desc");
             
             
             while (resultSet.next()) {
@@ -486,6 +486,7 @@ public class ConnectMSSQL {
                 temp.setMemberId(resultSet.getString("MemberId").toString());
                 temp.setMealType(resultSet.getString("MealType").toString());
                 temp.setNoOfMeal(resultSet.getString("NoOfMeal").toString());
+                temp.setDate(resultSet.getString("date").toString());
                 
                
                 database.add(temp);
@@ -514,7 +515,7 @@ public class ConnectMSSQL {
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement
-                    .executeQuery("SELECT * FROM Visitor "+query);
+                    .executeQuery("SELECT * FROM Visitor "+query+"  Order by VisitorId desc");
             
             
             while (resultSet.next()) {
@@ -554,7 +555,7 @@ public class ConnectMSSQL {
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement
-                    .executeQuery("Select *from Expense "+query);
+                    .executeQuery("Select *from Expense "+query+" Order by ExpenseId desc");
             
             
             while (resultSet.next()) {
@@ -588,7 +589,7 @@ public class ConnectMSSQL {
 
             
             Statement statement = connection.createStatement();
-            statement.executeUpdate("Insert into Meal (MemberId,MealTYpe,NoOfMeal) values ('"+meal.getMemberId()+"','"+meal.getMealType()+"','"+meal.getNoOfMeal()+"')");
+            statement.executeUpdate("Insert into Meal (MemberId,MealTYpe,NoOfMeal,date) values ('"+meal.getMemberId()+"','"+meal.getMealType()+"','"+meal.getNoOfMeal()+"','"+meal.getDate()+"')");
                  
         } catch (Exception e) {
             throw new Exception(e);
@@ -836,6 +837,9 @@ public class ConnectMSSQL {
             PreparedStatement st = connection.prepareStatement("Update Employee Set Name = ? ,FathersName = ? ,MothersName = ?,Email = ?,ContactNo = ?,DateOfBirth = ?,BloodGroup = ?,Address = ?,Post = ?,GuardianContactNo = ?,Salary = ?,Picture = ? where EmployeeId  = ?");
             
             
+            System.out.println(user.getPost());
+            System.out.println(user.getEmployeeId());
+            
             st.setString(1,user.getName());
             st.setString(2,user.getFathersName());
             st.setString(3, user.getMothersName());
@@ -849,6 +853,9 @@ public class ConnectMSSQL {
             st.setInt(11, user.getSalary());
             st.setBytes(12, user.getImage());
             st.setString(13, user.getEmployeeId());
+            
+            
+            
             st.executeUpdate();
             
         }
@@ -856,6 +863,50 @@ public class ConnectMSSQL {
         {
             throw new Exception(e);
         }
+    }
+    
+    public String  getValue(String query)
+    {
+        
+        
+        String val = new String();
+        
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            connection = DriverManager.getConnection(
+                    "jdbc:sqlserver://localhost:1433;databaseName=Hostel_Management_System;selectMethod=cursor", "sa", "123456");
+
+            //System.out.println("DATABASE NAME IS:" + connection.getMetaData().getDatabaseProductName());
+
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement
+                    .executeQuery(query);
+            
+            
+            resultSet.next();
+                
+                
+            try
+            {
+                val  = resultSet.getString(1).toString();
+            }
+            catch(Exception e)
+            {
+                val = "0";
+            }
+            
+            
+            
+            
+              
+            
+           
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return val;
+    
     }
     public static void main(String[] args) {
         

@@ -56,9 +56,6 @@ public class Dashboard extends javax.swing.JFrame {
         dashBoradPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        historyPanel = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         accessPanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -160,47 +157,6 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(dashBoradPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 5, Short.MAX_VALUE))
-        );
-
-        historyPanel.setBackground(new java.awt.Color(15, 19, 52));
-        historyPanel.setPreferredSize(new java.awt.Dimension(270, 70));
-        historyPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                historyPanelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                historyPanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                historyPanelMouseExited(evt);
-            }
-        });
-
-        jLabel4.setBackground(new java.awt.Color(15, 19, 52));
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Transaction History");
-
-        jLabel10.setBackground(new java.awt.Color(15, 19, 52));
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/report.png"))); // NOI18N
-
-        javax.swing.GroupLayout historyPanelLayout = new javax.swing.GroupLayout(historyPanel);
-        historyPanel.setLayout(historyPanelLayout);
-        historyPanelLayout.setHorizontalGroup(
-            historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, historyPanelLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        historyPanelLayout.setVerticalGroup(
-            historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(historyPanelLayout.createSequentialGroup()
-                .addGroup(historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 5, Short.MAX_VALUE))
         );
 
@@ -338,7 +294,6 @@ public class Dashboard extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(homePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(dashBoradPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(historyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(accessPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(packagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(developerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -352,12 +307,10 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(2, 2, 2)
                 .addComponent(packagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(historyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(accessPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(developerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 187, Short.MAX_VALUE))
+                .addGap(0, 252, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, -1));
@@ -399,7 +352,9 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_homePanelMouseExited
 
     private void dashBoradPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashBoradPanelMouseClicked
-        // TODO add your handling code here:
+        jDesktopPane1.removeAll();
+        DashBoard2 temp = new DashBoard2();
+        jDesktopPane1.add(temp).setVisible(true);
     }//GEN-LAST:event_dashBoradPanelMouseClicked
 
     private void dashBoradPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashBoradPanelMouseEntered
@@ -425,26 +380,6 @@ public class Dashboard extends javax.swing.JFrame {
         packagePanel.setBorder(new EmptyBorder(0,0,0,0));
     }//GEN-LAST:event_packagePanelMouseExited
 
-    private void historyPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historyPanelMouseClicked
-        if(admin.getAdminType().equals("Moderator"))
-        {
-            JOptionPane.showMessageDialog(this, "Sorry!\nModerator Cannot Access this Page","Error",JOptionPane.ERROR_MESSAGE);
-        }
-        else
-        {
-            
-            
-        }
-    }//GEN-LAST:event_historyPanelMouseClicked
-
-    private void historyPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historyPanelMouseEntered
-        historyPanel.setBorder(new MatteBorder(5,5,5,5,new Color(153,153,153)));
-    }//GEN-LAST:event_historyPanelMouseEntered
-
-    private void historyPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historyPanelMouseExited
-        historyPanel.setBorder(new EmptyBorder(0,0,0,0));
-    }//GEN-LAST:event_historyPanelMouseExited
-
     private void accessPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accessPanelMouseClicked
         if(admin.getAdminType().equals("Moderator"))
         {
@@ -467,7 +402,9 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_accessPanelMouseExited
 
     private void developerPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_developerPanelMouseClicked
-        
+        jDesktopPane1.removeAll();
+        DeveloperInfo temp = new DeveloperInfo();
+        jDesktopPane1.add(temp).setVisible(true);
     }//GEN-LAST:event_developerPanelMouseClicked
 
     private void developerPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_developerPanelMouseEntered
@@ -517,16 +454,13 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel accessPanel;
     private javax.swing.JPanel dashBoradPanel;
     private javax.swing.JPanel developerPanel;
-    private javax.swing.JPanel historyPanel;
     private javax.swing.JPanel homePanel;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

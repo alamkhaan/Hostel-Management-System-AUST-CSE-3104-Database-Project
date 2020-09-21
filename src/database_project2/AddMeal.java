@@ -57,6 +57,7 @@ public class AddMeal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
         setMinimumSize(new java.awt.Dimension(1050, 570));
+        setPreferredSize(new java.awt.Dimension(1050, 570));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(15, 19, 52));
@@ -181,7 +182,10 @@ public class AddMeal extends javax.swing.JFrame {
                 meal.setMemberId(memberId.getText());
                 meal.setMealType(mealType.getSelectedItem().toString());
                 meal.setNoOfMeal(noOfMeal.getSelectedItem().toString());
-                
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");  
+                Date date = new Date();  
+                String f = formatter.format(date);           
+                meal.setDate(f);
                 try{
                     new ConnectMSSQL().addMeal(meal);
                     MemberInfo m = arr.get(0);

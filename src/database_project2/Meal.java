@@ -48,10 +48,14 @@ public class Meal extends javax.swing.JFrame {
         clearTable(jTable1);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment( JLabel.LEFT );
-        for(int x=0;x<4;x++){
+        for(int x=0;x<5;x++){
          jTable1.getColumnModel().getColumn(x).setCellRenderer( centerRenderer );
         }
-        totalMeal.setText(Integer.toString(arr.size()));
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");  
+        Date date = new Date();  
+        String f = formatter.format(date);           
+        totalMeal.setText(new ConnectMSSQL().getValue("Select SUM(NoOfMeal) from Meal where date = '"+f+"'"));
+        System.out.println("Select SUM(NoOfMeal) from Meal where date = '"+f+"'");
         
         if((modIndex+1)*16>=arr.size())
             currentLength = arr.size()%16;
@@ -63,9 +67,10 @@ public class Meal extends javax.swing.JFrame {
         
             jTable1.getModel().setValueAt(arr.get(i).getMealId(),i, 0);
             jTable1.getModel().setValueAt(arr.get(i).getMemberId(),i, 1);
-            jTable1.getModel().setValueAt(arr.get(i).getMealType(),i, 2);
-            jTable1.getModel().setValueAt(arr.get(i).getNoOfMeal(),i, 3);
-            jTable1.getModel().setValueAt("Undo", i,4);             
+            jTable1.getModel().setValueAt(arr.get(i).getDate(),i, 2);
+            jTable1.getModel().setValueAt(arr.get(i).getMealType(),i, 3);
+            jTable1.getModel().setValueAt(arr.get(i).getNoOfMeal(),i, 4);
+            jTable1.getModel().setValueAt("Undo", i,5);             
         }
         
         jTable1.getColumn("Action").setCellRenderer(new ButtonRenderer(currentLength));
@@ -107,6 +112,7 @@ public class Meal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
         setMinimumSize(new java.awt.Dimension(1050, 570));
+        setPreferredSize(new java.awt.Dimension(1050, 570));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(15, 19, 52));
@@ -147,28 +153,28 @@ public class Meal extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Meal Id", "Member ID", "Meal Type", "No Of Meal", "Action"
+                "Meal Id", "Member ID", "Date", "Meal Type", "No Of Meal", "Action"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -183,13 +189,18 @@ public class Meal extends javax.swing.JFrame {
                 jTable1MousePressed(evt);
             }
         });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTable1KeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 1000, 270));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 1000, 270));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Total Meal:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 480, -1, -1));
+        jLabel2.setText("Total Meal Today:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 480, -1, 30));
 
         totalMeal.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         totalMeal.setEnabled(false);
@@ -246,10 +257,11 @@ public class Meal extends javax.swing.JFrame {
         for(int i=0;i<currentLength;i++)
         {
            jTable1.getModel().setValueAt(arr.get(i).getMealId(),i, 0);
-           jTable1.getModel().setValueAt(arr.get(i).getMemberId(),i, 1);
-           jTable1.getModel().setValueAt(arr.get(i).getMealType(),i, 2);
-           jTable1.getModel().setValueAt(arr.get(i).getNoOfMeal(),i, 3);
-           jTable1.getModel().setValueAt("Undo", i,4);  
+            jTable1.getModel().setValueAt(arr.get(i).getMemberId(),i, 1);
+            jTable1.getModel().setValueAt(arr.get(i).getDate(),i, 2);
+            jTable1.getModel().setValueAt(arr.get(i).getMealType(),i, 3);
+            jTable1.getModel().setValueAt(arr.get(i).getNoOfMeal(),i, 4);
+            jTable1.getModel().setValueAt("Undo", i,5);        
              
         }
     }//GEN-LAST:event_prevButtonActionPerformed
@@ -268,10 +280,11 @@ public class Meal extends javax.swing.JFrame {
            
 
            jTable1.getModel().setValueAt(arr.get(i).getMealId(),i, 0);
-           jTable1.getModel().setValueAt(arr.get(i).getMemberId(),i, 1);
-           jTable1.getModel().setValueAt(arr.get(i).getMealType(),i, 2);
-           jTable1.getModel().setValueAt(arr.get(i).getNoOfMeal(),i, 3);
-           jTable1.getModel().setValueAt("Undo", i,4);  
+            jTable1.getModel().setValueAt(arr.get(i).getMemberId(),i, 1);
+            jTable1.getModel().setValueAt(arr.get(i).getDate(),i, 2);
+            jTable1.getModel().setValueAt(arr.get(i).getMealType(),i, 3);
+            jTable1.getModel().setValueAt(arr.get(i).getNoOfMeal(),i, 4);
+            jTable1.getModel().setValueAt("Undo", i,5);        
 
         }
     }//GEN-LAST:event_nextButtonActionPerformed
@@ -284,7 +297,7 @@ public class Meal extends javax.swing.JFrame {
         int row = jTable1.getSelectedRow();
         int col = jTable1.getSelectedColumn();
         
-        if(col==4 && row<currentLength)
+        if(col==5 && row<currentLength)
         {
             int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to undo this Meal?", "Confirm", JOptionPane.OK_CANCEL_OPTION);
             if(x==0)
@@ -304,6 +317,31 @@ public class Meal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTable1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyTyped
+        int row = jTable1.getSelectedRow();
+        int col = jTable1.getSelectedColumn();
+        
+        if(col==5 && row<currentLength)
+        {
+            int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to Undo?", "Confirm", JOptionPane.OK_CANCEL_OPTION);
+            if(x==0)
+            {
+                try
+                {
+                    new ConnectMSSQL().delete("Meal"," where MealId = '"+jTable1.getValueAt(row, 0)+"'");
+                    JOptionPane.showMessageDialog(this, "Meal Undo Succesfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    new Meal(this.AdminId).setVisible(true);
+                    this.setVisible(false);
+                
+                }
+                catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(this, "Error Occured", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+    }//GEN-LAST:event_jTable1KeyTyped
 
     /**
      * @param args the command line arguments

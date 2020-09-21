@@ -502,7 +502,16 @@ public class EmployeeEdit extends javax.swing.JFrame {
         else
         footerSalary.setVisible(false);
     }//GEN-LAST:event_salaryKeyTyped
-
+     public boolean validate(String email)
+    {
+        int x = email.indexOf("@");
+        if(x==-1)
+            return false;
+        x = email.indexOf(".", x);
+        if(x==-1)
+            return false;
+        return true;
+    }
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
 
         if(name.getText().length()==0)
@@ -520,6 +529,10 @@ public class EmployeeEdit extends javax.swing.JFrame {
         else if(email.getText().length()==0)
         {
             JOptionPane.showMessageDialog(this, "Email is Empty","Error",JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!validate(email.getText()))
+        {
+            JOptionPane.showMessageDialog(this, "Email is not Valid","Error",JOptionPane.ERROR_MESSAGE);
         }
         else if(contactNo.getText().length()==0)
         {
@@ -543,23 +556,23 @@ public class EmployeeEdit extends javax.swing.JFrame {
         }
         else
         {
-            EmployeeInfo user = new EmployeeInfo();
+            EmployeeInfo user1 = new EmployeeInfo();
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             Date date = new Date();
             String f = formatter.format(date);
-            user.setEmployeeId(f.substring(2,4)+f.substring(5,7)+new ConnectMSSQL().getSerial("EmployeeSerial"));
+            user1.setEmployeeId(user.getEmployeeId());
 
-            user.setName(name.getText());
-            user.setFathersName(fathersName.getText());
-            user.setMothersName(mothersName.getText());
-            user.setEmail(email.getText());
-            user.setContactNo(contactNo.getText());
-            user.setDateOfBirth(new SimpleDateFormat("dd/MM/yyyy").format(dateOfBirth.getDate()).toString());
-            user.setBloodGroup(bloodGroup.getSelectedItem().toString());
-            user.setPost(post.getSelectedItem().toString());
-            user.setAddress(address.getText());
-            user.setGuardianContactNo(gContactNo.getText());
-            user.setSalary(Integer.valueOf(salary.getText()));
+            user1.setName(name.getText());
+            user1.setFathersName(fathersName.getText());
+            user1.setMothersName(mothersName.getText());
+            user1.setEmail(email.getText());
+            user1.setContactNo(contactNo.getText());
+            user1.setDateOfBirth(new SimpleDateFormat("dd/MM/yyyy").format(dateOfBirth.getDate()).toString());
+            user1.setBloodGroup(bloodGroup.getSelectedItem().toString());
+            user1.setPost(post.getSelectedItem().toString());
+            user1.setAddress(address.getText());
+            user1.setGuardianContactNo(gContactNo.getText());
+            user1.setSalary(Integer.valueOf(salary.getText()));
 
             Icon icon = image.getIcon();
 
@@ -581,12 +594,12 @@ public class EmployeeEdit extends javax.swing.JFrame {
             {
                 e.printStackTrace();
             }
-            user.setImage(baos.toByteArray());
+            user1.setImage(baos.toByteArray());
             try
             {
-                new ConnectMSSQL().updateEmployee(user);
+                new ConnectMSSQL().updateEmployee(user1);
                 
-                JOptionPane.showMessageDialog(this, "Updated Successfully","Added",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Updated Successfully","Updated",JOptionPane.INFORMATION_MESSAGE);
                 backButtonActionPerformed(evt);
             }
             catch(Exception e)

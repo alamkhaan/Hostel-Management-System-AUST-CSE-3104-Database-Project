@@ -377,7 +377,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         int x = email.indexOf("@");
         if(x==-1)
             return false;
-        x = email.indexOf(".com", x);
+        x = email.indexOf(".", x);
         if(x==-1)
             return false;
         return true;

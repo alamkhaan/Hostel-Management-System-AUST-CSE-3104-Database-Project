@@ -342,8 +342,8 @@ public class MemberEdit extends javax.swing.JFrame {
         });
         getContentPane().add(gContactNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 340, 190, 30));
 
-        updateButton.setText("Update");
         updateButton.setBackground(new java.awt.Color(0, 51, 255));
+        updateButton.setText("Update");
         updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateButtonActionPerformed(evt);
@@ -513,6 +513,10 @@ public class MemberEdit extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this, "Email is Empty","Error",JOptionPane.ERROR_MESSAGE);
         }
+        else if(!validate(email.getText()))
+        {
+            JOptionPane.showMessageDialog(this, "Email is not Valid","Error",JOptionPane.ERROR_MESSAGE);
+        }
         else if(contactNo.getText().length()==0)
         {
             JOptionPane.showMessageDialog(this, "Contact No is Empty","Error",JOptionPane.ERROR_MESSAGE);
@@ -628,7 +632,17 @@ public class MemberEdit extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_addImageButtonActionPerformed
-
+     public boolean validate(String email)
+    {
+        int x = email.indexOf("@");
+        if(x==-1)
+            return false;
+        x = email.indexOf(".", x);
+        if(x==-1)
+            return false;
+        return true;
+    }
+    
     /**
      * @param args the command line arguments
      */

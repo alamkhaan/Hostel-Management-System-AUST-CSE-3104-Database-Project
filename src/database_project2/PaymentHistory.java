@@ -36,7 +36,7 @@ public class PaymentHistory extends javax.swing.JFrame {
         this.AdminId = AdminId;
         initComponents();
         JTextFieldDateEditor editor = (JTextFieldDateEditor) searchByDate.getDateEditor();editor.setEnabled(false);
-        arr = new ConnectMSSQL().getPaymentInfo("ORDER BY PaymentId desc");
+        arr = new ConnectMSSQL().getPaymentInfo("");
         jTable1.setDefaultEditor(Object.class, null);
         clearTable(jTable1);
         

@@ -15,16 +15,26 @@ public class MealInfo {
     private String memberId;
     private String mealType;
     private String noOfMeal;
+    private String date;
     
     
     public MealInfo() {
     }
     
-    public MealInfo(String mealId, String memberId, String mealType, String noOfMeal) {
+    public MealInfo(String mealId, String memberId, String mealType, String noOfMeal,String date) {
         this.mealId = mealId;
         this.memberId = memberId;
         this.mealType = mealType;
         this.noOfMeal = noOfMeal;
+        this.date = date;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getMealId() {
