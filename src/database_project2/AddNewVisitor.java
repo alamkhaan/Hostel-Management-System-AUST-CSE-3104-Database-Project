@@ -83,6 +83,7 @@ public class AddNewVisitor extends javax.swing.JFrame {
         resetButton = new javax.swing.JButton();
         timeOut = new com.github.lgooddatepicker.components.DateTimePicker();
         timeIn = new com.github.lgooddatepicker.components.DateTimePicker();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
@@ -107,39 +108,39 @@ public class AddNewVisitor extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(30, 30, 30)
                 .addComponent(backButton)
-                .addGap(307, 307, 307)
+                .addGap(334, 334, 334)
                 .addComponent(jLabel1)
-                .addContainerGap(458, Short.MAX_VALUE))
+                .addContainerGap(436, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(backButton))
-                .addContainerGap(31, Short.MAX_VALUE))
+                    .addComponent(backButton)
+                    .addComponent(jLabel1))
+                .addGap(17, 17, 17))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 90));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 70));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Time In:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 130, 30));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 130, 30));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Member's ID:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 130, 30));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 130, 30));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("Time Out:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 130, 30));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 130, 30));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("Visitor's Name:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 140, 30));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 140, 30));
 
         memberId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -149,26 +150,43 @@ public class AddNewVisitor extends javax.swing.JFrame {
                 memberIdKeyTyped(evt);
             }
         });
-        getContentPane().add(memberId, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 310, 40));
-        getContentPane().add(visitorsName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 310, 40));
+        getContentPane().add(memberId, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, 310, 40));
+        getContentPane().add(visitorsName, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 310, 40));
 
         saveButton.setText("Save");
+        saveButton.setBackground(new java.awt.Color(0, 153, 255));
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 120, 40));
+        getContentPane().add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 120, 40));
 
         resetButton.setText("Reset");
+        resetButton.setBackground(new java.awt.Color(204, 0, 0));
         resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 120, 40));
-        getContentPane().add(timeOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, 310, 40));
-        getContentPane().add(timeIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 310, 40));
+        getContentPane().add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 410, 120, 40));
+        getContentPane().add(timeOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, 310, 40));
+        getContentPane().add(timeIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, 310, 40));
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1050, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1050, 500));
 
         pack();
         setLocationRelativeTo(null);
@@ -311,6 +329,7 @@ public class AddNewVisitor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField memberId;
     private javax.swing.JButton resetButton;
     private javax.swing.JButton saveButton;

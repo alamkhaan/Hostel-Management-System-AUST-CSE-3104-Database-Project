@@ -106,6 +106,7 @@ public class Expense extends javax.swing.JFrame {
         prevButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         monthlyExpense = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
@@ -149,16 +150,19 @@ public class Expense extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 70));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Expense Name:");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Date:");
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("Amount:");
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, -1, -1));
 
         amount.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -170,6 +174,7 @@ public class Expense extends javax.swing.JFrame {
         getContentPane().add(expenseName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 300, 30));
 
         resetButon.setText("Reset");
+        resetButon.setBackground(new java.awt.Color(255, 102, 102));
         resetButon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetButonActionPerformed(evt);
@@ -178,6 +183,7 @@ public class Expense extends javax.swing.JFrame {
         getContentPane().add(resetButon, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, 90, 30));
 
         saveButton.setText("Save");
+        saveButton.setBackground(new java.awt.Color(102, 153, 255));
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
@@ -250,13 +256,17 @@ public class Expense extends javax.swing.JFrame {
         });
         getContentPane().add(prevButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Monthly Expense:");
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 490, 170, 20));
 
         monthlyExpense.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         monthlyExpense.setEnabled(false);
         getContentPane().add(monthlyExpense, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 490, 190, 30));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hostel_meal3.jpg"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1050, 500));
 
         pack();
         setLocationRelativeTo(null);
@@ -479,6 +489,7 @@ public class Expense extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

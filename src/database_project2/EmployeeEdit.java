@@ -109,6 +109,7 @@ public class EmployeeEdit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
@@ -133,7 +134,6 @@ public class EmployeeEdit extends javax.swing.JFrame {
         name = new javax.swing.JTextField();
         gContactNo = new javax.swing.JTextField();
         addImageButton = new javax.swing.JButton();
-        submitButton = new javax.swing.JButton();
         bloodGroup = new javax.swing.JComboBox<>();
         post = new javax.swing.JComboBox<>();
         footerFathersName = new javax.swing.JLabel();
@@ -146,6 +146,22 @@ public class EmployeeEdit extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         salary = new javax.swing.JTextField();
         footerSalary = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        submitButton = new javax.swing.JButton();
+
+        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1050, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
@@ -155,9 +171,9 @@ public class EmployeeEdit extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(15, 19, 52));
 
+        jLabel1.setText("Update Employee Info");
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Update Employee Info");
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -171,11 +187,11 @@ public class EmployeeEdit extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(27, 27, 27)
                 .addComponent(backButton)
-                .addGap(371, 371, 371)
+                .addGap(305, 305, 305)
                 .addComponent(jLabel1)
-                .addContainerGap(486, Short.MAX_VALUE))
+                .addContainerGap(537, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,9 +209,9 @@ public class EmployeeEdit extends javax.swing.JFrame {
         jLabel2.setText("Mother's Name:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 150, 30));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Address:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 90, 20));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, 90, 20));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Email:");
@@ -213,25 +229,25 @@ public class EmployeeEdit extends javax.swing.JFrame {
         jLabel7.setText("Blood Group:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, -1, 30));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setText("Father's Name:");
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 140, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setText("Post:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 110, 30));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel10.setText("Guardian Contact No:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, -1, 30));
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, -1, 30));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel13.setText("Name:");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, 30));
 
-        image.setBackground(new java.awt.Color(102, 102, 102));
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/DSC_0335.jpg"))); // NOI18N
         image.setText("Image");
+        image.setBackground(new java.awt.Color(102, 102, 102));
         getContentPane().add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 100, 120, 120));
 
         fathersName.setPreferredSize(new java.awt.Dimension(59, 27));
@@ -292,7 +308,7 @@ public class EmployeeEdit extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(address);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 310, 190, 60));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 280, 190, 60));
 
         name.setPreferredSize(new java.awt.Dimension(59, 27));
         name.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -308,7 +324,7 @@ public class EmployeeEdit extends javax.swing.JFrame {
                 gContactNoKeyTyped(evt);
             }
         });
-        getContentPane().add(gContactNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 390, 190, 30));
+        getContentPane().add(gContactNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 360, 190, 30));
 
         addImageButton.setText("Add Image");
         addImageButton.addActionListener(new java.awt.event.ActionListener() {
@@ -316,15 +332,7 @@ public class EmployeeEdit extends javax.swing.JFrame {
                 addImageButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(addImageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 230, 90, 20));
-
-        submitButton.setText("Update");
-        submitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 490, -1, -1));
+        getContentPane().add(addImageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 230, 110, 20));
 
         bloodGroup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-" }));
         getContentPane().add(bloodGroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, 190, 30));
@@ -352,17 +360,17 @@ public class EmployeeEdit extends javax.swing.JFrame {
         footerContact.setText("Contact No. is Empty");
         getContentPane().add(footerContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 190, 13));
 
-        footerAddress.setBackground(new java.awt.Color(255, 0, 0));
         footerAddress.setText("Address is Empty");
-        getContentPane().add(footerAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 370, 190, 13));
+        footerAddress.setBackground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(footerAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 340, 190, 13));
 
-        footerGContact.setBackground(new java.awt.Color(255, 0, 0));
         footerGContact.setText("Guardian Contact No is Empty");
-        getContentPane().add(footerGContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 420, 190, 13));
+        footerGContact.setBackground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(footerGContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 390, 190, 13));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel14.setText("Salary");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 440, 110, 30));
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 110, 30));
 
         salary.setPreferredSize(new java.awt.Dimension(59, 27));
         salary.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -370,11 +378,56 @@ public class EmployeeEdit extends javax.swing.JFrame {
                 salaryKeyTyped(evt);
             }
         });
-        getContentPane().add(salary, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 440, 190, 30));
+        getContentPane().add(salary, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 410, 190, 30));
 
-        footerSalary.setBackground(new java.awt.Color(255, 0, 0));
         footerSalary.setText("Salary is Empty");
-        getContentPane().add(footerSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, 190, 13));
+        footerSalary.setBackground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(footerSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 440, 190, 13));
+
+        jPanel4.setBackground(new java.awt.Color(173, 216, 230));
+
+        submitButton.setText("Update");
+        submitButton.setBackground(new java.awt.Color(0, 102, 102));
+        submitButton.setForeground(new java.awt.Color(255, 255, 255));
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(488, 488, 488)
+                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(472, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(420, Short.MAX_VALUE)
+                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60))
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -677,6 +730,9 @@ public class EmployeeEdit extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField mothersName;
     private javax.swing.JTextField name;

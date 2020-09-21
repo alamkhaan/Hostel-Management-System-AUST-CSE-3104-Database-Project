@@ -108,6 +108,7 @@ public class Meal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         prevButton = new javax.swing.JButton();
         nextButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
@@ -199,6 +200,7 @@ public class Meal extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 1000, 270));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Total Meal Today:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 480, -1, 30));
 
@@ -206,6 +208,7 @@ public class Meal extends javax.swing.JFrame {
         totalMeal.setEnabled(false);
         getContentPane().add(totalMeal, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 480, 180, 30));
 
+        jButton1.setBackground(new java.awt.Color(153, 153, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setText("Add Meal");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -230,6 +233,9 @@ public class Meal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(nextButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 70, 20));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hostel_meal2.jpg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1050, 490));
 
         pack();
         setLocationRelativeTo(null);
@@ -383,6 +389,7 @@ public class Meal extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

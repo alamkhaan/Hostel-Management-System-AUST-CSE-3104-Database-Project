@@ -90,6 +90,7 @@ public class Employee extends javax.swing.JFrame {
         addNewEmployee = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
@@ -133,6 +134,7 @@ public class Employee extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -156,7 +158,6 @@ public class Employee extends javax.swing.JFrame {
                 "ID", "Name", "Contact No", "Blood Group", "Post", "Salary", "Action"
             }
         ));
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setMaximumSize(new java.awt.Dimension(1245, 6789));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -170,7 +171,7 @@ public class Employee extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 193, 1010, 270));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 1010, 270));
 
         searchByContact.setText("Search By Contact No");
         searchByContact.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -300,6 +301,9 @@ public class Employee extends javax.swing.JFrame {
         );
 
         getContentPane().add(addNewEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(826, 97, 176, 43));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hostel room-01.jpg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1050, 510));
 
         pack();
         setLocationRelativeTo(null);
@@ -570,6 +574,7 @@ public class Employee extends javax.swing.JFrame {
     private javax.swing.JButton backToHome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

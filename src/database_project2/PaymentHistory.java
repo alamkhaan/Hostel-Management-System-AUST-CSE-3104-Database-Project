@@ -122,6 +122,7 @@ public class PaymentHistory extends javax.swing.JFrame {
         searchById = new javax.swing.JLabel();
         nextButton = new javax.swing.JButton();
         prevButton = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
@@ -198,10 +199,12 @@ public class PaymentHistory extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 980, 280));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Total Monthly Payment:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 490, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Total Payment Today:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 440, -1, -1));
 
@@ -231,17 +234,20 @@ public class PaymentHistory extends javax.swing.JFrame {
         getContentPane().add(searchByMemberId, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 160, 30));
         getContentPane().add(searchByDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 160, 30));
 
+        searchButton.setBackground(new java.awt.Color(0, 204, 204));
         searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 70, 30));
+        getContentPane().add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 100, 30));
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Search by Date");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 100, -1));
 
+        searchById.setForeground(new java.awt.Color(255, 255, 255));
         searchById.setText("Search by Member ID");
         getContentPane().add(searchById, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 130, -1));
 
@@ -260,6 +266,9 @@ public class PaymentHistory extends javax.swing.JFrame {
             }
         });
         getContentPane().add(prevButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hostel_bed.jpg"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1050, 490));
 
         pack();
         setLocationRelativeTo(null);
@@ -452,6 +461,7 @@ public class PaymentHistory extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

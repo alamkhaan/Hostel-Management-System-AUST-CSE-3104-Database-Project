@@ -104,10 +104,8 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         name = new javax.swing.JTextField();
         gContactNo = new javax.swing.JTextField();
         addImageButton = new javax.swing.JButton();
-        submitButton = new javax.swing.JButton();
         bloodGroup = new javax.swing.JComboBox<>();
         post = new javax.swing.JComboBox<>();
-        resetButton = new javax.swing.JButton();
         footerFathersName = new javax.swing.JLabel();
         footerName = new javax.swing.JLabel();
         footerMothersName = new javax.swing.JLabel();
@@ -118,6 +116,9 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         salary = new javax.swing.JTextField();
         footerSalary = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        submitButton = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
@@ -127,9 +128,9 @@ public class EmployeeRegistration extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(15, 19, 52));
 
+        jLabel1.setText("Employee Registration");
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Employee Registration");
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -189,8 +190,8 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         jLabel8.setText("Father's Name:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 140, 30));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setText("Post:");
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 110, 30));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -288,29 +289,13 @@ public class EmployeeRegistration extends javax.swing.JFrame {
                 addImageButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(addImageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 230, 90, 20));
-
-        submitButton.setText("Submit");
-        submitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, -1, -1));
+        getContentPane().add(addImageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 230, 100, 20));
 
         bloodGroup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-" }));
         getContentPane().add(bloodGroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, 190, 30));
 
         post.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manager", "Accountant", "Cook", "Cleaner", "Others" }));
         getContentPane().add(post, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 440, 190, 30));
-
-        resetButton.setText("Reset");
-        resetButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, -1, -1));
 
         footerFathersName.setBackground(new java.awt.Color(255, 0, 0));
         footerFathersName.setText("Fathers Name is Empty");
@@ -355,6 +340,47 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         footerSalary.setBackground(new java.awt.Color(255, 0, 0));
         footerSalary.setText("Salary is Empty");
         getContentPane().add(footerSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, 190, 13));
+
+        jPanel2.setBackground(new java.awt.Color(95, 158, 160));
+
+        submitButton.setText("Submit");
+        submitButton.setBackground(new java.awt.Color(51, 204, 255));
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitButtonActionPerformed(evt);
+            }
+        });
+
+        resetButton.setText("Reset");
+        resetButton.setBackground(new java.awt.Color(255, 51, 51));
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(391, Short.MAX_VALUE)
+                .addComponent(resetButton)
+                .addGap(54, 54, 54)
+                .addComponent(submitButton)
+                .addGap(467, 467, 467))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(419, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(submitButton)
+                    .addComponent(resetButton))
+                .addGap(56, 56, 56))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1050, 500));
 
         pack();
         setLocationRelativeTo(null);
@@ -702,6 +728,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField mothersName;
     private javax.swing.JTextField name;

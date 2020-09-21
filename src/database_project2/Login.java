@@ -60,6 +60,7 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -74,6 +75,12 @@ public class Login extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1050, 570));
         setMinimumSize(new java.awt.Dimension(1050, 570));
         getContentPane().setLayout(null);
+
+        jLabel5.setFont(new java.awt.Font("MV Boli", 1, 40)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Hostel Management System");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(210, 20, 576, 65);
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51,150));
 
@@ -164,13 +171,13 @@ public class Login extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(290, 80, 410, 400);
+        jPanel3.setBounds(280, 110, 410, 400);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/login.jpg"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(1050, 570));
         jLabel1.setMinimumSize(new java.awt.Dimension(1050, 570));
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 1050, 570);
+        jLabel1.setBounds(0, 0, 1040, 570);
 
         pack();
         setLocationRelativeTo(null);
@@ -311,6 +318,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPasswordField jPassword;

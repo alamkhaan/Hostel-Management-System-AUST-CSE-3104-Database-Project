@@ -53,6 +53,7 @@ public class AddMeal extends javax.swing.JFrame {
         resetButton = new javax.swing.JButton();
         mealType = new javax.swing.JComboBox<>();
         noOfMeal = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
@@ -80,21 +81,21 @@ public class AddMeal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(backButton)
-                .addGap(375, 375, 375)
+                .addGap(370, 370, 370)
                 .addComponent(jLabel1)
-                .addContainerGap(486, Short.MAX_VALUE))
+                .addContainerGap(491, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backButton)
                     .addComponent(jLabel1))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 80));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 70));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Meal Type:");
@@ -120,6 +121,7 @@ public class AddMeal extends javax.swing.JFrame {
         });
         getContentPane().add(memberId, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 380, 50));
 
+        submitButton.setBackground(new java.awt.Color(0, 153, 255));
         submitButton.setText("Submit");
         submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +130,7 @@ public class AddMeal extends javax.swing.JFrame {
         });
         getContentPane().add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 110, 50));
 
+        resetButton.setBackground(new java.awt.Color(255, 102, 102));
         resetButton.setText("Reset");
         resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +144,21 @@ public class AddMeal extends javax.swing.JFrame {
 
         noOfMeal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
         getContentPane().add(noOfMeal, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 380, 50));
+
+        jPanel2.setBackground(new java.awt.Color(0, 128, 128));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1050, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1050, 500));
 
         pack();
         setLocationRelativeTo(null);
@@ -266,6 +284,7 @@ public class AddMeal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JComboBox<String> mealType;
     private javax.swing.JTextField memberId;
     private javax.swing.JComboBox<String> noOfMeal;

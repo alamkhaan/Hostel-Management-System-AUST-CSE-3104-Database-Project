@@ -112,10 +112,11 @@ public class EmployeeDetails extends javax.swing.JFrame {
         dateOfBirth = new javax.swing.JTextField();
         image = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        editButton = new javax.swing.JButton();
-        deleteButton = new javax.swing.JButton();
         gContactNo = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        deleteButton = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
@@ -125,9 +126,9 @@ public class EmployeeDetails extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(15, 19, 52));
 
+        jLabel1.setText("Employee Information");
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Employee Information");
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -260,24 +261,6 @@ public class EmployeeDetails extends javax.swing.JFrame {
         jLabel14.setText("Name:");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 92, -1, 30));
 
-        editButton.setBackground(new java.awt.Color(51, 51, 255));
-        editButton.setText("Edit");
-        editButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(editButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, -1, -1));
-
-        deleteButton.setBackground(new java.awt.Color(255, 0, 0));
-        deleteButton.setText("Delete");
-        deleteButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, -1, -1));
-
         gContactNo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         gContactNo.setEnabled(false);
         gContactNo.setPreferredSize(new java.awt.Dimension(59, 27));
@@ -286,6 +269,49 @@ public class EmployeeDetails extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel13.setText("Address:");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 90, 20));
+
+        jPanel2.setBackground(new java.awt.Color(70, 130, 180));
+
+        deleteButton.setText("Delete");
+        deleteButton.setBackground(new java.awt.Color(255, 0, 0));
+        deleteButton.setForeground(new java.awt.Color(255, 255, 255));
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+
+        editButton.setText("Edit");
+        editButton.setBackground(new java.awt.Color(51, 51, 255));
+        editButton.setForeground(new java.awt.Color(255, 255, 255));
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(404, Short.MAX_VALUE)
+                .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
+                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(422, 422, 422))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(418, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deleteButton)
+                    .addComponent(editButton))
+                .addGap(57, 57, 57))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1050, 500));
 
         pack();
         setLocationRelativeTo(null);
@@ -383,6 +409,7 @@ public class EmployeeDetails extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField mothersName;
     private javax.swing.JTextField name;

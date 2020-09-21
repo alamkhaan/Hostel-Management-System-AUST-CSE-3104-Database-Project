@@ -168,6 +168,7 @@ public class MemberEdit extends javax.swing.JFrame {
         footerGContact = new javax.swing.JLabel();
         image = new javax.swing.JLabel();
         addImageButton = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
@@ -177,9 +178,9 @@ public class MemberEdit extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(15, 19, 52));
 
-        jLabel1.setText("Update Member Info");
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Update Member Info");
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -400,6 +401,21 @@ public class MemberEdit extends javax.swing.JFrame {
             }
         });
         getContentPane().add(addImageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 220, 90, 20));
+
+        jPanel2.setBackground(new java.awt.Color(135, 206, 180));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1050, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1050, 500));
 
         pack();
         setLocationRelativeTo(null);
@@ -710,6 +726,7 @@ public class MemberEdit extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> mealType;
     private javax.swing.JTextField mothersName;

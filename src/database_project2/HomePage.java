@@ -326,7 +326,7 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_expenseButtonActionPerformed
 
     private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButtonActionPerformed
-        new Settings(AdminId).setVisible(true);
+        new Settings(this.AdminId).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_settingsButtonActionPerformed
 

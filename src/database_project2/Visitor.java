@@ -91,6 +91,7 @@ public class Visitor extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         timeIn = new com.github.lgooddatepicker.components.DatePicker();
         timeOut = new com.github.lgooddatepicker.components.DatePicker();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
@@ -215,21 +216,29 @@ public class Visitor extends javax.swing.JFrame {
                 searchButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 70, -1));
+        getContentPane().add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
 
         jLabel2.setText("Search by Member Id");
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 120, 10));
 
         jLabel3.setText("Search by Visitor Name");
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 150, 10));
 
         jLabel4.setText("Search by Time Out Date");
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 160, 10));
 
         jLabel5.setText("Search by Time In Date");
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 160, 10));
         getContentPane().add(timeIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 170, 30));
         getContentPane().add(timeOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 170, 30));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hostel room1-01.jpg"))); // NOI18N
+        jLabel6.setText("jLabel6");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1050, 520));
 
         pack();
         setLocationRelativeTo(null);
@@ -437,6 +446,7 @@ public class Visitor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

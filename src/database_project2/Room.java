@@ -85,6 +85,7 @@ public class Room extends javax.swing.JFrame {
         nextButton = new javax.swing.JButton();
         prevButton = new javax.swing.JButton();
         searchButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
@@ -160,6 +161,7 @@ public class Room extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 970, 280));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Search By Room ID:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 190, -1));
 
@@ -194,6 +196,7 @@ public class Room extends javax.swing.JFrame {
         });
         getContentPane().add(prevButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, -1, -1));
 
+        searchButton.setBackground(new java.awt.Color(0, 204, 204));
         searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,6 +204,10 @@ public class Room extends javax.swing.JFrame {
             }
         });
         getContentPane().add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hostel bed.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1050, 490));
 
         pack();
         setLocationRelativeTo(null);
@@ -395,6 +402,7 @@ public class Room extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

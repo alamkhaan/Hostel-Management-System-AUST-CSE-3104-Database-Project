@@ -58,10 +58,11 @@ public class AddNewRoom extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         floor = new javax.swing.JTextField();
         roomNo = new javax.swing.JTextField();
-        resetButton = new javax.swing.JButton();
-        saveButton = new javax.swing.JButton();
         buildingNo = new javax.swing.JComboBox<>();
         totalBed1 = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
+        saveButton = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
@@ -70,9 +71,9 @@ public class AddNewRoom extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(15, 19, 52));
 
-        jLabel1.setText("Add New Room");
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Add New Room");
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -86,47 +87,47 @@ public class AddNewRoom extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(28, 28, 28)
                 .addComponent(backButton)
-                .addGap(323, 323, 323)
+                .addGap(319, 319, 319)
                 .addComponent(jLabel1)
-                .addContainerGap(443, Short.MAX_VALUE))
+                .addContainerGap(460, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backButton)
-                    .addComponent(jLabel1))
-                .addContainerGap(42, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(backButton))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Floor:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Total Bed:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, -1, -1));
 
-        jLabel4.setText("Select Type:");
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, -1, -1));
+        jLabel4.setText("Select Type:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("Room No:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, -1, 20));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, -1, 20));
 
-        jLabel7.setText("Building No:");
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, -1));
+        jLabel7.setText("Building No:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, -1, -1));
 
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Ac");
-        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, -1, -1));
+        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, -1, -1));
 
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Non-Ac");
@@ -135,43 +136,73 @@ public class AddNewRoom extends javax.swing.JFrame {
                 jRadioButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, -1, -1));
+        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, -1, -1));
 
+        floor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                floorActionPerformed(evt);
+            }
+        });
         floor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 floorKeyTyped(evt);
             }
         });
-        getContentPane().add(floor, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 360, 40));
+        getContentPane().add(floor, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 360, 40));
 
         roomNo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 roomNoKeyTyped(evt);
             }
         });
-        getContentPane().add(roomNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 360, 40));
+        getContentPane().add(roomNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 360, 40));
 
-        resetButton.setText("Reset");
-        resetButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 440, 140, 30));
+        buildingNo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "1", "2", "3", "4", "5", "6", "7" }));
+        getContentPane().add(buildingNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 360, 40));
 
+        totalBed1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "One", "Two", "Three", "Four", "Five" }));
+        getContentPane().add(totalBed1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 360, 40));
+
+        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
+
+        saveButton.setBackground(new java.awt.Color(0, 204, 255));
         saveButton.setText("Save");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, 120, 30));
 
-        buildingNo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "1", "2", "3", "4", "5", "6", "7" }));
-        getContentPane().add(buildingNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 360, 40));
+        resetButton.setBackground(new java.awt.Color(255, 51, 51));
+        resetButton.setText("Reset");
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
+            }
+        });
 
-        totalBed1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "One", "Two", "Three", "Four", "Five" }));
-        getContentPane().add(totalBed1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 360, 40));
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(440, Short.MAX_VALUE)
+                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(340, 340, 340))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(370, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(120, 120, 120))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1050, 520));
 
         pack();
         setLocationRelativeTo(null);
@@ -263,6 +294,10 @@ public class AddNewRoom extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void floorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_floorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_floorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -312,6 +347,7 @@ public class AddNewRoom extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JButton resetButton;

@@ -24,7 +24,7 @@ public class Settings extends javax.swing.JFrame {
     public Settings(String AdminId) {
         this.AdminId = AdminId;
         initComponents();
-        ArrayList<AdminInfo> arr  =new ConnectMSSQL().getAdminInfo("where EmployeeId = '"+AdminId+"'");
+        ArrayList<AdminInfo> arr  = new ConnectMSSQL().getAdminInfo("where EmployeeId = '"+AdminId+"'");
         
         userName.setText(arr.get(0).getUserName());
         password.setText(arr.get(0).getPassword());
@@ -42,6 +42,7 @@ public class Settings extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
@@ -54,6 +55,20 @@ public class Settings extends javax.swing.JFrame {
         logoutButton = new javax.swing.JButton();
         submitButton = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1050, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
@@ -83,7 +98,7 @@ public class Settings extends javax.swing.JFrame {
                 .addComponent(backButton)
                 .addGap(360, 360, 360)
                 .addComponent(jLabel4)
-                .addContainerGap(569, Short.MAX_VALUE))
+                .addContainerGap(508, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,19 +110,19 @@ public class Settings extends javax.swing.JFrame {
                 .addGap(28, 28, 28))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 60));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 60));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setText("Confirm Password:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 180, 30));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 180, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel9.setText("Update Info");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, 180, 40));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 180, 40));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel10.setText("Password:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 140, 30));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 140, 30));
 
         userName.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         userName.setPreferredSize(new java.awt.Dimension(59, 27));
@@ -116,7 +131,7 @@ public class Settings extends javax.swing.JFrame {
                 userNameKeyTyped(evt);
             }
         });
-        getContentPane().add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, 190, 30));
+        getContentPane().add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, 190, 30));
 
         password.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         password.setPreferredSize(new java.awt.Dimension(59, 27));
@@ -125,7 +140,7 @@ public class Settings extends javax.swing.JFrame {
                 passwordKeyTyped(evt);
             }
         });
-        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, 190, 30));
+        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 190, 30));
 
         confirmPassword.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         confirmPassword.setPreferredSize(new java.awt.Dimension(59, 27));
@@ -134,7 +149,7 @@ public class Settings extends javax.swing.JFrame {
                 confirmPasswordKeyTyped(evt);
             }
         });
-        getContentPane().add(confirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 190, 30));
+        getContentPane().add(confirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 190, 30));
 
         logoutButton.setBackground(new java.awt.Color(255, 0, 0));
         logoutButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -145,7 +160,7 @@ public class Settings extends javax.swing.JFrame {
                 logoutButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 470, 80, 30));
+        getContentPane().add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 470, 80, 30));
 
         submitButton.setBackground(new java.awt.Color(15, 19, 52));
         submitButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -156,11 +171,26 @@ public class Settings extends javax.swing.JFrame {
                 submitButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 400, 80, 30));
+        getContentPane().add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 390, 80, 30));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel11.setText("User Name:");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 140, 30));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 140, 30));
+
+        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1050, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 510, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1050, 510));
 
         pack();
         setLocationRelativeTo(null);
@@ -285,6 +315,8 @@ public class Settings extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JButton logoutButton;
     private javax.swing.JTextField password;
     private javax.swing.JButton submitButton;

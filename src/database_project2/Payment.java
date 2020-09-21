@@ -56,6 +56,7 @@ public class Payment extends javax.swing.JFrame {
         resetButton = new javax.swing.JButton();
         submitButton = new javax.swing.JButton();
         paymentHistoryButton = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
@@ -178,6 +179,21 @@ public class Payment extends javax.swing.JFrame {
             }
         });
         getContentPane().add(paymentHistoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, 140, 40));
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1050, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1050, 500));
 
         pack();
         setLocationRelativeTo(null);
@@ -355,6 +371,7 @@ public class Payment extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField memberId;
     private javax.swing.JTextField name;
     private javax.swing.JButton paymentHistoryButton;

@@ -109,10 +109,8 @@ public class MemberRegistration extends javax.swing.JFrame {
         name = new javax.swing.JTextField();
         gContactNo = new javax.swing.JTextField();
         addImageButton = new javax.swing.JButton();
-        submitButton = new javax.swing.JButton();
         bloodGroup = new javax.swing.JComboBox<>();
         profession = new javax.swing.JComboBox<>();
-        resetButton = new javax.swing.JButton();
         footerFathersName = new javax.swing.JLabel();
         mealType = new javax.swing.JComboBox<>();
         footerName = new javax.swing.JLabel();
@@ -121,6 +119,9 @@ public class MemberRegistration extends javax.swing.JFrame {
         footerContact = new javax.swing.JLabel();
         footerAddress = new javax.swing.JLabel();
         footerGContact = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        submitButton = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -319,27 +320,11 @@ public class MemberRegistration extends javax.swing.JFrame {
         });
         getContentPane().add(addImageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 220, 90, 20));
 
-        submitButton.setText("Submit");
-        submitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, -1, -1));
-
         bloodGroup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-" }));
         getContentPane().add(bloodGroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, 190, 30));
 
         profession.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Teacher", "Doctor", "Engineer", "Service Holder", "Others" }));
         getContentPane().add(profession, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 440, 190, 30));
-
-        resetButton.setText("Reset");
-        resetButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, -1, -1));
 
         footerFathersName.setBackground(new java.awt.Color(255, 0, 0));
         footerFathersName.setText("Fathers Name is Empty");
@@ -371,6 +356,47 @@ public class MemberRegistration extends javax.swing.JFrame {
         footerGContact.setBackground(new java.awt.Color(255, 0, 0));
         footerGContact.setText("Guardian Contact No is Empty");
         getContentPane().add(footerGContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 370, 190, 13));
+
+        jPanel2.setBackground(new java.awt.Color(95, 158, 160));
+
+        submitButton.setBackground(new java.awt.Color(0, 153, 204));
+        submitButton.setText("Submit");
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitButtonActionPerformed(evt);
+            }
+        });
+
+        resetButton.setBackground(new java.awt.Color(255, 51, 51));
+        resetButton.setText("Reset");
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(408, Short.MAX_VALUE)
+                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(415, 415, 415))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(413, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1050, 500));
 
         pack();
         setLocationRelativeTo(null);
@@ -788,6 +814,7 @@ public class MemberRegistration extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> mealType;
     private javax.swing.JTextField mothersName;

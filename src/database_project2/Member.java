@@ -97,6 +97,7 @@ public class Member extends javax.swing.JFrame {
         search1 = new javax.swing.JButton();
         prevButton = new javax.swing.JButton();
         nextButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
@@ -275,6 +276,9 @@ public class Member extends javax.swing.JFrame {
             }
         });
         getContentPane().add(nextButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 470, 70, 20));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hostel bed12.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1050, 510));
 
         pack();
         setLocationRelativeTo(null);
@@ -556,6 +560,7 @@ public class Member extends javax.swing.JFrame {
     private javax.swing.JButton addNewMember;
     private javax.swing.JButton backToHome;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
