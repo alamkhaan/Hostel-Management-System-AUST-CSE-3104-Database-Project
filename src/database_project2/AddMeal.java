@@ -58,7 +58,6 @@ public class AddMeal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
         setMinimumSize(new java.awt.Dimension(1050, 570));
-        setPreferredSize(new java.awt.Dimension(1050, 570));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(15, 19, 52));
@@ -207,12 +206,12 @@ public class AddMeal extends javax.swing.JFrame {
                 try{
                     new ConnectMSSQL().addMeal(meal);
                     MemberInfo m = arr.get(0);
-                    m.setDue(m.getDue()+(new MemberRegistration().calDue(meal.getMealType(), ""))/30*(Integer.valueOf(meal.getNoOfMeal())));
-                    System.out.println(m.getDue());
-                    new ConnectMSSQL().updateMember(m);
+                    int x = m.getDue()+(new MemberRegistration().calDue(meal.getMealType(), ""))/30*(Integer.valueOf(meal.getNoOfMeal()));
+                    new ConnectMSSQL().update("Member", "Due = "+x+" where memberId in (Select MemberId from Member where MemberId='"+memberId.getText()+"')");
                     
+                    //System.out.println("Due = "+x+" where memberId in (Select MemberId from Member where MemberId='"+memberId.getText()+"'");
             
-                    JOptionPane.showMessageDialog(this, "Insert Successfully","Successfull",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Insert Successfully","Successful",JOptionPane.INFORMATION_MESSAGE);
                     
                     memberId.setText("");
                 }

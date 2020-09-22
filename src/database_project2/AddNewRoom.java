@@ -59,7 +59,7 @@ public class AddNewRoom extends javax.swing.JFrame {
         floor = new javax.swing.JTextField();
         roomNo = new javax.swing.JTextField();
         buildingNo = new javax.swing.JComboBox<>();
-        totalBed1 = new javax.swing.JComboBox<>();
+        totalBed = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         saveButton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
@@ -160,8 +160,8 @@ public class AddNewRoom extends javax.swing.JFrame {
         buildingNo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "1", "2", "3", "4", "5", "6", "7" }));
         getContentPane().add(buildingNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 360, 40));
 
-        totalBed1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "One", "Two", "Three", "Four", "Five" }));
-        getContentPane().add(totalBed1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 360, 40));
+        totalBed.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "One", "Two", "Three", "Four", "Five" }));
+        getContentPane().add(totalBed, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 360, 40));
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -279,8 +279,8 @@ public class AddNewRoom extends javax.swing.JFrame {
                 room.setRoomId(query);
                 room.setFloor(floor.getText());
                 room.setType(jRadioButton1.isSelected() ? "Ac" : "Non-Ac");
-                room.setTotalBed(buildingNo.getSelectedIndex());
-                room.setEmptyBed(buildingNo.getSelectedIndex());
+                room.setTotalBed(totalBed.getSelectedIndex());
+                room.setEmptyBed(totalBed.getSelectedIndex());
                 new ConnectMSSQL().addRoom(room);
                 JOptionPane.showMessageDialog(this,"Room added Successfully");
                 resetButtonActionPerformed(evt);
@@ -353,6 +353,6 @@ public class AddNewRoom extends javax.swing.JFrame {
     private javax.swing.JButton resetButton;
     private javax.swing.JTextField roomNo;
     private javax.swing.JButton saveButton;
-    private javax.swing.JComboBox<String> totalBed1;
+    private javax.swing.JComboBox<String> totalBed;
     // End of variables declaration//GEN-END:variables
 }
