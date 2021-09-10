@@ -7,7 +7,6 @@ package database_project2;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import javafx.util.Pair;
 import javax.swing.JOptionPane;
 
 
@@ -73,7 +72,6 @@ public class Settings extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
         setMinimumSize(new java.awt.Dimension(1050, 570));
-        setPreferredSize(new java.awt.Dimension(1050, 570));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(15, 19, 52));

@@ -6,7 +6,6 @@
 package database_project2;
 
 import java.awt.Color;
-import javafx.util.Pair;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -33,6 +32,7 @@ public class Dashboard extends javax.swing.JFrame {
      public Dashboard(String AdminId) {
         initComponents();
         this.AdminId = AdminId;
+        jDesktopPane1.removeAll();
         DashBoard2 temp = new DashBoard2();
         jDesktopPane1.add(temp).setVisible(true);
         admin  = (new ConnectMSSQL().getAdminInfo("where EmployeeId = '"+AdminId+"'")).get(0);

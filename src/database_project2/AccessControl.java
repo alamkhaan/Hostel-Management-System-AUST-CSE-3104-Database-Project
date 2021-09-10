@@ -7,7 +7,7 @@ package database_project2;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import javafx.util.Pair;
+
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;

@@ -42,7 +42,7 @@ public class Visitor extends javax.swing.JFrame {
         jTable1.setDefaultEditor(Object.class, null);
         //System.out.println(arr.size());
 
-        if ((modIndex + 1) * 16 >= arr.size()) {
+        if ((modIndex + 1) * 16 > arr.size()) {
             currentLength = arr.size() % 16;
         } else {
             currentLength = 16;
@@ -59,7 +59,7 @@ public class Visitor extends javax.swing.JFrame {
         }
 
         prevButton.setVisible(false);
-        if (arr.size() < 16) {
+        if (arr.size() <= 16) {
             nextButton.setVisible(false);
         }
     }
@@ -152,7 +152,6 @@ public class Visitor extends javax.swing.JFrame {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
-                {null, null, null, null, null},
                 {null, null, null, null, null}
             },
             new String [] {
@@ -163,8 +162,10 @@ public class Visitor extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 1000, 300));
 
-        addVisitorButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         addVisitorButton.setText("Add New Visitor");
+        addVisitorButton.setBackground(new java.awt.Color(15, 19, 52));
+        addVisitorButton.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        addVisitorButton.setForeground(new java.awt.Color(255, 255, 255));
         addVisitorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addVisitorButtonActionPerformed(evt);
@@ -186,6 +187,7 @@ public class Visitor extends javax.swing.JFrame {
         getContentPane().add(visitorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 160, 30));
 
         resetButton.setText("Reset");
+        resetButton.setBackground(new java.awt.Color(255, 153, 102));
         resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetButtonActionPerformed(evt);
@@ -274,18 +276,18 @@ public class Visitor extends javax.swing.JFrame {
             nextButton.setVisible(false);
         }
         clearTable(jTable1);
-        if ((modIndex + 1) * 16 >= arr.size()) {
+        if ((modIndex + 1) * 16 > arr.size()) {
             currentLength = arr.size() % 16;
         } else {
             currentLength = 16;
         }
         for (int i = 0; i < currentLength; i++) {
 
-            jTable1.getModel().setValueAt(arr.get(i).getVisitorId(), i, 0);
-            jTable1.getModel().setValueAt(arr.get(i).getVisitorsName(), i, 1);
-            jTable1.getModel().setValueAt(arr.get(i).getMemberId(), i, 2);
-            jTable1.getModel().setValueAt(arr.get(i).getTimeIn(), i, 3);
-            jTable1.getModel().setValueAt(arr.get(i).getTimeOut(), i, 4);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getVisitorId(), i, 0);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getVisitorsName(), i, 1);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getMemberId(), i, 2);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getTimeIn(), i, 3);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getTimeOut(), i, 4);
 
         }
     }//GEN-LAST:event_nextButtonActionPerformed
@@ -297,18 +299,18 @@ public class Visitor extends javax.swing.JFrame {
         }
         nextButton.setVisible(true);
         clearTable(jTable1);
-        if ((modIndex + 1) * 16 >= arr.size()) {
+        if ((modIndex + 1) * 16 > arr.size()) {
             currentLength = arr.size() % 16;
         } else {
             currentLength = 16;
         }
         for (int i = 0; i < currentLength; i++) {
 
-            jTable1.getModel().setValueAt(arr.get(i).getVisitorId(), i, 0);
-            jTable1.getModel().setValueAt(arr.get(i).getVisitorsName(), i, 1);
-            jTable1.getModel().setValueAt(arr.get(i).getMemberId(), i, 2);
-            jTable1.getModel().setValueAt(arr.get(i).getTimeIn(), i, 3);
-            jTable1.getModel().setValueAt(arr.get(i).getTimeOut(), i, 4);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getVisitorId(), i, 0);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getVisitorsName(), i, 1);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getMemberId(), i, 2);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getTimeIn(), i, 3);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getTimeOut(), i, 4);
 
         }
     }//GEN-LAST:event_prevButtonActionPerformed
@@ -376,7 +378,7 @@ public class Visitor extends javax.swing.JFrame {
 
         clearTable(jTable1);
 
-        if ((modIndex + 1) * 16 >= arr.size()) {
+        if ((modIndex + 1) * 16 > arr.size()) {
             currentLength = arr.size() % 16;
         } else {
             currentLength = 16;
@@ -394,7 +396,7 @@ public class Visitor extends javax.swing.JFrame {
         }
 
         prevButton.setVisible(false);
-        if (arr.size() < 16) {
+        if (arr.size() <= 16) {
             nextButton.setVisible(false);
         } else {
             nextButton.setVisible(true);

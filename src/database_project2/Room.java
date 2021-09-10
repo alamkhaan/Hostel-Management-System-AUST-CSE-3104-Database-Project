@@ -37,7 +37,7 @@ public class Room extends javax.swing.JFrame {
         arr  = new ConnectMSSQL().getRoomInfo("");
         clearTable(jTable1);
         
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
             currentLength = arr.size()%16;
         else currentLength = 16;
         
@@ -61,7 +61,7 @@ public class Room extends javax.swing.JFrame {
         jTable1.getColumn("Action").setCellEditor(new ButtonEditor(new JCheckBox(),jTable1));
         
         prevButton.setVisible(false);
-        if(arr.size()<16)
+        if(arr.size()<=16)
             nextButton.setVisible(false);
     }
 
@@ -172,6 +172,8 @@ public class Room extends javax.swing.JFrame {
         });
         getContentPane().add(searchRoomId, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 220, 30));
 
+        addRoomButton.setBackground(new java.awt.Color(15, 19, 52));
+        addRoomButton.setForeground(new java.awt.Color(255, 255, 255));
         addRoomButton.setText("Add New Room");
         addRoomButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,19 +237,19 @@ public class Room extends javax.swing.JFrame {
         if((modIndex+1)*16>=arr.size())
             nextButton.setVisible(false);
         clearTable(jTable1);
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
             currentLength = arr.size()%16;
         else currentLength = 16;
         for(int i=0;i<currentLength;i++)
         {
             //System.out.println(arr.get(i).getMemberId()+" "+arr.get(i).getName()+" "+arr.get(i).getContactNo()+" "+arr.get(i).getBloodGroup()+" "+arr.get(i).getSeatNo()+" "+arr.get(i).getMealType());
         
-            jTable1.getModel().setValueAt(arr.get(i).getRoomId(),i, 0);
-            jTable1.getModel().setValueAt(arr.get(i).getBuildingNo(),i, 1);
-            jTable1.getModel().setValueAt(arr.get(i).getFloor(),i, 2);
-            jTable1.getModel().setValueAt(arr.get(i).getType(),i, 3);
-            jTable1.getModel().setValueAt(arr.get(i).getTotalBed(),i, 4);
-            jTable1.getModel().setValueAt(arr.get(i).getEmptyBed(),i, 5);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getRoomId(),i, 0);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getBuildingNo(),i, 1);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getFloor(),i, 2);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getType(),i, 3);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getTotalBed(),i, 4);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getEmptyBed(),i, 5);
             jTable1.getModel().setValueAt("Delete", i,6);
             
             
@@ -261,19 +263,19 @@ public class Room extends javax.swing.JFrame {
             prevButton.setVisible(false);
         nextButton.setVisible(true);
         clearTable(jTable1);
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
             currentLength = arr.size()%16;
         else currentLength = 16;
         for(int i=0;i<currentLength;i++)
         {
             //System.out.println(arr.get(i).getMemberId()+" "+arr.get(i).getName()+" "+arr.get(i).getContactNo()+" "+arr.get(i).getBloodGroup()+" "+arr.get(i).getSeatNo()+" "+arr.get(i).getMealType());
         
-            jTable1.getModel().setValueAt(arr.get(i).getRoomId(),i, 0);
-            jTable1.getModel().setValueAt(arr.get(i).getBuildingNo(),i, 1);
-            jTable1.getModel().setValueAt(arr.get(i).getFloor(),i, 2);
-            jTable1.getModel().setValueAt(arr.get(i).getType(),i, 3);
-            jTable1.getModel().setValueAt(arr.get(i).getTotalBed(),i, 4);
-            jTable1.getModel().setValueAt(arr.get(i).getEmptyBed(),i, 5);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getRoomId(),i, 0);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getBuildingNo(),i, 1);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getFloor(),i, 2);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getType(),i, 3);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getTotalBed(),i, 4);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getEmptyBed(),i, 5);
             jTable1.getModel().setValueAt("Delete", i,6);
             
             
@@ -299,7 +301,7 @@ public class Room extends javax.swing.JFrame {
             else arr  = new ConnectMSSQL().getRoomInfo("where RoomId =  '"+query+"'");
             clearTable(jTable1);
 
-            if((modIndex+1)*16>=arr.size())
+            if((modIndex+1)*16>arr.size())
                 currentLength = arr.size()%16;
             else currentLength = 16;
 
@@ -322,7 +324,7 @@ public class Room extends javax.swing.JFrame {
 
 
             prevButton.setVisible(false);
-            if(arr.size()<16)
+            if(arr.size()<=16)
                 nextButton.setVisible(false);
             else nextButton.setVisible(true);
         

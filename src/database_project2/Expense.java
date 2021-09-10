@@ -53,17 +53,17 @@ public class Expense extends javax.swing.JFrame {
         
         arr.clear();
         arr = new ConnectMSSQL().getExpenseInfo("");
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
             currentLength = arr.size()%16;
         else currentLength = 16;
         
         for(int i=0;i<currentLength;i++)
         {
            
-            jTable1.getModel().setValueAt(arr.get(i).getExpenseId(),i, 0);
-            jTable1.getModel().setValueAt(arr.get(i).getExpenseName(),i, 1);
-            jTable1.getModel().setValueAt(arr.get(i).getDate(),i, 2);
-            jTable1.getModel().setValueAt(arr.get(i).getAmount(),i, 3);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getExpenseId(),i, 0);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getExpenseName(),i, 1);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getDate(),i, 2);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getAmount(),i, 3);
             jTable1.getModel().setValueAt("Undo", i,4);
             
             
@@ -74,7 +74,7 @@ public class Expense extends javax.swing.JFrame {
         jTable1.getColumn("Action").setCellEditor(new ButtonEditor(new JCheckBox(),jTable1));
         
         prevButton.setVisible(false);
-        if(arr.size()<16)
+        if(arr.size()<=16)
             nextButton.setVisible(false);
         
         
@@ -111,7 +111,6 @@ public class Expense extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
         setMinimumSize(new java.awt.Dimension(1050, 570));
-        setPreferredSize(new java.awt.Dimension(1050, 570));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(15, 19, 52));
@@ -347,24 +346,24 @@ public class Expense extends javax.swing.JFrame {
                 arr = new ConnectMSSQL().getExpenseInfo("");
                 clearTable(jTable1);
 
-                if((modIndex+1)*16>=arr.size())
+                if((modIndex+1)*16>arr.size())
                     currentLength = arr.size()%16;
                 else currentLength = 16;
 
                 for(int i=0;i<currentLength;i++)
                 {
 
-                    jTable1.getModel().setValueAt(arr.get(i).getExpenseId(),i, 0);
-                    jTable1.getModel().setValueAt(arr.get(i).getExpenseName(),i, 1);
-                    jTable1.getModel().setValueAt(arr.get(i).getDate(),i, 2);
-                    jTable1.getModel().setValueAt(arr.get(i).getAmount(),i, 3);
+                    jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getExpenseId(),i, 0);
+                    jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getExpenseName(),i, 1);
+                    jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getDate(),i, 2);
+                    jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getAmount(),i, 3);
                     jTable1.getModel().setValueAt("Undo", i,4);
 
 
 
                 }
                 prevButton.setVisible(false);
-                if(arr.size()<16)
+                if(arr.size()<=16)
                     nextButton.setVisible(false);
                 else nextButton.setVisible(true);
             }
@@ -383,16 +382,16 @@ public class Expense extends javax.swing.JFrame {
         if((modIndex+1)*16>=arr.size())
         nextButton.setVisible(false);
         clearTable(jTable1);
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
         currentLength = arr.size()%16;
         else currentLength = 16;
         for(int i=0;i<currentLength;i++)
         {
 
-            jTable1.getModel().setValueAt(arr.get(i).getExpenseId(),i, 0);
-            jTable1.getModel().setValueAt(arr.get(i).getExpenseName(),i, 1);
-            jTable1.getModel().setValueAt(arr.get(i).getDate(),i, 2);
-            jTable1.getModel().setValueAt(arr.get(i).getAmount(),i, 3);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getExpenseId(),i, 0);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getExpenseName(),i, 1);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getDate(),i, 2);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getAmount(),i, 3);
             jTable1.getModel().setValueAt("Undo", i,4);
 
         }
@@ -404,16 +403,16 @@ public class Expense extends javax.swing.JFrame {
         prevButton.setVisible(false);
         nextButton.setVisible(true);
         clearTable(jTable1);
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
         currentLength = arr.size()%16;
         else currentLength = 16;
         for(int i=0;i<currentLength;i++)
         {
 
-            jTable1.getModel().setValueAt(arr.get(i).getExpenseId(),i, 0);
-            jTable1.getModel().setValueAt(arr.get(i).getExpenseName(),i, 1);
-            jTable1.getModel().setValueAt(arr.get(i).getDate(),i, 2);
-            jTable1.getModel().setValueAt(arr.get(i).getAmount(),i, 3);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getExpenseId(),i, 0);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getExpenseName(),i, 1);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getDate(),i, 2);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getAmount(),i, 3);
             jTable1.getModel().setValueAt("Undo", i,4);
 
         }

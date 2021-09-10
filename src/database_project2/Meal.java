@@ -44,6 +44,7 @@ public class Meal extends javax.swing.JFrame {
         this.AdminId = AdminId;
         initComponents();
         jTable1.setDefaultEditor(Object.class, null);
+        arr.clear();
         arr  = new ConnectMSSQL().getMealInfo("");
         clearTable(jTable1);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -57,13 +58,16 @@ public class Meal extends javax.swing.JFrame {
         totalMeal.setText(new ConnectMSSQL().getValue("Select SUM(NoOfMeal) from Meal where date = '"+f+"'"));
         System.out.println("Select SUM(NoOfMeal) from Meal where date = '"+f+"'");
         
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
             currentLength = arr.size()%16;
         else currentLength = 16;
         
+        
+        System.out.println(currentLength+" "+arr.size());
+        
         for(int i=0;i<currentLength;i++)
         {
-            //System.out.println(arr.get(i).getMemberId()+" "+arr.get(i).getName()+" "+arr.get(i).getContactNo()+" "+arr.get(i).getBloodGroup()+" "+arr.get(i).getSeatNo()+" "+arr.get(i).getMealType());
+            System.out.println(i+" "+arr.get(i).getMemberId()+" "+arr.get(i).getMealType());
         
             jTable1.getModel().setValueAt(arr.get(i).getMealId(),i, 0);
             jTable1.getModel().setValueAt(arr.get(i).getMemberId(),i, 1);
@@ -77,7 +81,7 @@ public class Meal extends javax.swing.JFrame {
         jTable1.getColumn("Action").setCellEditor(new ButtonEditor(new JCheckBox(),jTable1));
         
         prevButton.setVisible(false);
-        if(arr.size()<16)
+        if(arr.size()<=16)
             nextButton.setVisible(false);
     }
 
@@ -168,6 +172,7 @@ public class Meal extends javax.swing.JFrame {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
                 {null, null, null, null, null, null}
             },
             new String [] {
@@ -232,7 +237,7 @@ public class Meal extends javax.swing.JFrame {
                 nextButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(nextButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 70, 20));
+        getContentPane().add(nextButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 70, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hostel_meal2.jpg"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1050, 490));
@@ -257,16 +262,16 @@ public class Meal extends javax.swing.JFrame {
             prevButton.setVisible(false);
         nextButton.setVisible(true);
         clearTable(jTable1);
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
             currentLength = arr.size()%16;
         else currentLength = 16;
         for(int i=0;i<currentLength;i++)
         {
-           jTable1.getModel().setValueAt(arr.get(i).getMealId(),i, 0);
-            jTable1.getModel().setValueAt(arr.get(i).getMemberId(),i, 1);
-            jTable1.getModel().setValueAt(arr.get(i).getDate(),i, 2);
-            jTable1.getModel().setValueAt(arr.get(i).getMealType(),i, 3);
-            jTable1.getModel().setValueAt(arr.get(i).getNoOfMeal(),i, 4);
+           jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getMealId(),i, 0);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getMemberId(),i, 1);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getDate(),i, 2);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getMealType(),i, 3);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getNoOfMeal(),i, 4);
             jTable1.getModel().setValueAt("Undo", i,5);        
              
         }
@@ -278,18 +283,18 @@ public class Meal extends javax.swing.JFrame {
         if((modIndex+1)*16>=arr.size())
         nextButton.setVisible(false);
         clearTable(jTable1);
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
         currentLength = arr.size()%16;
         else currentLength = 16;
         for(int i=0;i<currentLength;i++)
         {
            
 
-           jTable1.getModel().setValueAt(arr.get(i).getMealId(),i, 0);
-            jTable1.getModel().setValueAt(arr.get(i).getMemberId(),i, 1);
-            jTable1.getModel().setValueAt(arr.get(i).getDate(),i, 2);
-            jTable1.getModel().setValueAt(arr.get(i).getMealType(),i, 3);
-            jTable1.getModel().setValueAt(arr.get(i).getNoOfMeal(),i, 4);
+           jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getMealId(),i, 0);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getMemberId(),i, 1);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getDate(),i, 2);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getMealType(),i, 3);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getNoOfMeal(),i, 4);
             jTable1.getModel().setValueAt("Undo", i,5);        
 
         }
@@ -310,7 +315,8 @@ public class Meal extends javax.swing.JFrame {
             {
                 try
                 {
-                    new ConnectMSSQL().delete("Meal"," where MealId = '"+jTable1.getValueAt(row, 0)+"'");
+                    
+                    new ConnectMSSQL().delete("Meal"," where MealId between (Select MealId from Meal where MealId = "+jTable1.getValueAt(row, 0)+" ) and (Select MealId from Meal where MealId = "+jTable1.getValueAt(row, 0)+" )");
                     JOptionPane.showMessageDialog(this, "Meal Undo Succesfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                     new Meal(this.AdminId).setVisible(true);
                     this.setVisible(false);

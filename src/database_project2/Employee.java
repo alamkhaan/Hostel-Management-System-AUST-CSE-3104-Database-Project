@@ -35,19 +35,19 @@ public class Employee extends javax.swing.JFrame {
         jTable1.setDefaultEditor(Object.class, null);
         clearTable(jTable1);
         
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
             currentLength = arr.size()%16;
         else currentLength = 16;
         
         for(int i=0;i<currentLength;i++)
         {
            
-            jTable1.getModel().setValueAt(arr.get(i).getEmployeeId(),i, 0);
-            jTable1.getModel().setValueAt(arr.get(i).getName(),i, 1);
-            jTable1.getModel().setValueAt(arr.get(i).getContactNo(),i, 2);
-            jTable1.getModel().setValueAt(arr.get(i).getBloodGroup(),i, 3);
-            jTable1.getModel().setValueAt(arr.get(i).getPost(),i, 4);
-            jTable1.getModel().setValueAt(arr.get(i).getSalary(),i, 5);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getEmployeeId(),i, 0);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getName(),i, 1);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getContactNo(),i, 2);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getBloodGroup(),i, 3);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getPost(),i, 4);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getSalary(),i, 5);
             jTable1.getModel().setValueAt("Details", i,6);
             
             
@@ -58,7 +58,7 @@ public class Employee extends javax.swing.JFrame {
         jTable1.getColumn("Action").setCellEditor(new ButtonEditor(new JCheckBox(),jTable1));
         
         prevButton.setVisible(false);
-        if(arr.size()<16)
+        if(arr.size()<=16)
             nextButton.setVisible(false);
         
     }
@@ -446,19 +446,19 @@ public class Employee extends javax.swing.JFrame {
 
         clearTable(jTable1);
 
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
         currentLength = arr.size()%16;
         else currentLength = 16;
 
         for(int i=0;i<currentLength;i++)
         {
             
-            jTable1.getModel().setValueAt(arr.get(i).getEmployeeId(),i, 0);
-            jTable1.getModel().setValueAt(arr.get(i).getName(),i, 1);
-            jTable1.getModel().setValueAt(arr.get(i).getContactNo(),i, 2);
-            jTable1.getModel().setValueAt(arr.get(i).getBloodGroup(),i, 3);
-            jTable1.getModel().setValueAt(arr.get(i).getPost(),i, 4);
-            jTable1.getModel().setValueAt(arr.get(i).getSalary(),i, 5);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getEmployeeId(),i, 0);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getName(),i, 1);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getContactNo(),i, 2);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getBloodGroup(),i, 3);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getPost(),i, 4);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getSalary(),i, 5);
             jTable1.getModel().setValueAt("Details", i,6);
 
         }
@@ -466,7 +466,7 @@ public class Employee extends javax.swing.JFrame {
         jTable1.getColumn("Action").setCellEditor(new ButtonEditor(new JCheckBox(),jTable1));
 
         prevButton.setVisible(false);
-        if(arr.size()<16)
+        if(arr.size()<=16)
         nextButton.setVisible(false);
         else nextButton.setVisible(true);
 
@@ -475,22 +475,22 @@ public class Employee extends javax.swing.JFrame {
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
         modIndex--;
         if(modIndex==0)
-        prevButton.setVisible(false);
+            prevButton.setVisible(false);
         nextButton.setVisible(true);
         clearTable(jTable1);
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
         currentLength = arr.size()%16;
         else currentLength = 16;
         for(int i=0;i<currentLength;i++)
         {
             //System.out.println(arr.get(i).getMemberId()+" "+arr.get(i).getName()+" "+arr.get(i).getContactNo()+" "+arr.get(i).getBloodGroup()+" "+arr.get(i).getSeatNo()+" "+arr.get(i).getMealType());
 
-            jTable1.getModel().setValueAt(arr.get(i).getEmployeeId(),i, 0);
-            jTable1.getModel().setValueAt(arr.get(i).getName(),i, 1);
-            jTable1.getModel().setValueAt(arr.get(i).getContactNo(),i, 2);
-            jTable1.getModel().setValueAt(arr.get(i).getBloodGroup(),i, 3);
-            jTable1.getModel().setValueAt(arr.get(i).getPost(),i, 4);
-            jTable1.getModel().setValueAt(arr.get(i).getSalary(),i, 5);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getEmployeeId(),i, 0);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getName(),i, 1);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getContactNo(),i, 2);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getBloodGroup(),i, 3);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getPost(),i, 4);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getSalary(),i, 5);
             jTable1.getModel().setValueAt("Details", i,6);
 
         }
@@ -509,12 +509,12 @@ public class Employee extends javax.swing.JFrame {
         {
             //System.out.println(arr.get(i).getMemberId()+" "+arr.get(i).getName()+" "+arr.get(i).getContactNo()+" "+arr.get(i).getBloodGroup()+" "+arr.get(i).getSeatNo()+" "+arr.get(i).getMealType());
 
-            jTable1.getModel().setValueAt(arr.get(i).getEmployeeId(),i, 0);
-            jTable1.getModel().setValueAt(arr.get(i).getName(),i, 1);
-            jTable1.getModel().setValueAt(arr.get(i).getContactNo(),i, 2);
-            jTable1.getModel().setValueAt(arr.get(i).getBloodGroup(),i, 3);
-            jTable1.getModel().setValueAt(arr.get(i).getPost(),i, 4);
-            jTable1.getModel().setValueAt(arr.get(i).getSalary(),i, 5);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getEmployeeId(),i, 0);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getName(),i, 1);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getContactNo(),i, 2);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getBloodGroup(),i, 3);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getPost(),i, 4);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getSalary(),i, 5);
             jTable1.getModel().setValueAt("Details", i,6);
 
         }

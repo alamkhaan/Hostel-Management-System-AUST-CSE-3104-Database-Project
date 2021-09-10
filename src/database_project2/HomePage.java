@@ -154,7 +154,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Settings");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 370, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 380, -1, -1));
 
         settingsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hb.jpg"))); // NOI18N
         settingsButton.setText("Settings");
@@ -164,7 +164,7 @@ public class HomePage extends javax.swing.JFrame {
                 settingsButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(settingsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 310, 130, 140));
+        getContentPane().add(settingsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 320, 130, 140));
 
         Payment.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
         Payment.setForeground(new java.awt.Color(255, 255, 255));
@@ -259,7 +259,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Expense");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, -1, -1));
 
         expenseButton.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
         expenseButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -271,12 +271,12 @@ public class HomePage extends javax.swing.JFrame {
                 expenseButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(expenseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 130, 140));
+        getContentPane().add(expenseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, 130, 140));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Dashboard");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 370, 90, 20));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, 90, 20));
 
         dashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hb.jpg"))); // NOI18N
         dashboardButton.setText("DashBoard");
@@ -286,7 +286,7 @@ public class HomePage extends javax.swing.JFrame {
                 dashboardButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(dashboardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 310, 130, 140));
+        getContentPane().add(dashboardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 130, 140));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/black.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 570));
@@ -296,7 +296,7 @@ public class HomePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void visitorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitorButtonActionPerformed
-        new Visitor(AdminId).setVisible(true);
+        new Visitor(this.AdminId).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_visitorButtonActionPerformed
 
@@ -321,7 +321,7 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_mealButtonActionPerformed
 
     private void expenseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expenseButtonActionPerformed
-        new Expense(AdminId).setVisible(true);
+        new Expense(this.AdminId).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_expenseButtonActionPerformed
 
@@ -331,12 +331,12 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_settingsButtonActionPerformed
 
     private void employeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeButtonActionPerformed
-        new Employee(AdminId).setVisible(true);
+        new Employee(this.AdminId).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_employeeButtonActionPerformed
 
     private void dashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardButtonActionPerformed
-        new Dashboard(AdminId).setVisible(true);
+        new Dashboard(this.AdminId).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_dashboardButtonActionPerformed
 

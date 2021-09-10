@@ -39,11 +39,11 @@ public class Member extends javax.swing.JFrame {
         this.AdminId = AdminId;
         initComponents();
         jTable1.getColumnModel().getColumn(5).setPreferredWidth(115);
-        arr = new ConnectMSSQL().getMemberInfo("");
+        arr = new ConnectMSSQL().getMemberInfo("where  exists (Select MemberId from member) ");
         jTable1.setDefaultEditor(Object.class, null);
         clearTable(jTable1);
         
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
             currentLength = arr.size()%16;
         else currentLength = 16;
         
@@ -67,7 +67,7 @@ public class Member extends javax.swing.JFrame {
         jTable1.getColumn("Action").setCellEditor(new ButtonEditor(new JCheckBox(),jTable1));
         
         prevButton.setVisible(false);
-        if(arr.size()<16)
+        if(arr.size()<=16)
             nextButton.setVisible(false);
         
     }
@@ -367,7 +367,7 @@ public class Member extends javax.swing.JFrame {
         if((modIndex+1)*16>=arr.size())
             nextButton.setVisible(false);
         clearTable(jTable1);
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
             currentLength = arr.size()%16;
         else currentLength = 16;
         for(int i=0;i<currentLength;i++)
@@ -394,7 +394,7 @@ public class Member extends javax.swing.JFrame {
             prevButton.setVisible(false);
         nextButton.setVisible(true);
         clearTable(jTable1);
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
             currentLength = arr.size()%16;
         else currentLength = 16;
         for(int i=0;i<currentLength;i++)
@@ -485,13 +485,13 @@ public class Member extends javax.swing.JFrame {
         
         clearTable(jTable1);
         
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
             currentLength = arr.size()%16;
         else currentLength = 16;
         
         for(int i=0;i<currentLength;i++)
         {
-            System.out.println(arr.get(i).getMemberId()+" "+arr.get(i).getName()+" "+arr.get(i).getContactNo()+" "+arr.get(i).getBloodGroup()+" "+arr.get(i).getSeatNo()+" "+arr.get(i).getMealType());
+            //System.out.println(arr.get(i).getMemberId()+" "+arr.get(i).getName()+" "+arr.get(i).getContactNo()+" "+arr.get(i).getBloodGroup()+" "+arr.get(i).getSeatNo()+" "+arr.get(i).getMealType());
         
             jTable1.getModel().setValueAt(arr.get(i).getMemberId(),i, 0);
             jTable1.getModel().setValueAt(arr.get(i).getName(),i, 1);
@@ -509,7 +509,7 @@ public class Member extends javax.swing.JFrame {
         jTable1.getColumn("Action").setCellEditor(new ButtonEditor(new JCheckBox(),jTable1));
         
         prevButton.setVisible(false);
-        if(arr.size()<16)
+        if(arr.size()<=16)
             nextButton.setVisible(false);
         else nextButton.setVisible(true);
         

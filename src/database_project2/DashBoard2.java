@@ -48,7 +48,7 @@ public class DashBoard2 extends javax.swing.JInternalFrame {
         nonacSeat.setText(temp.getValue("SELECT COUNT(Seat.SeatId) FROM Seat Inner JOIN Room ON Room.RoomId = Seat.RoomId where Room.type='Non-Ac'"));
         totalEmptySeat.setText(temp.getValue("Select Count(SeatId) from Seat where isEmpty = 1"));
         acEmptySeat.setText(temp.getValue("SELECT Count(SeatId) FROM Seat Inner JOIN Room ON Room.RoomId = Seat.RoomId where Room.type='Ac' and Seat.isEmpty = 1"));
-        nonacEmptySeat.setText(temp.getValue("SELECT Count(SeatId) FROM Seat Inner JOIN Room ON Room.RoomId = Seat.RoomId where Room.type='Non-Ac' and Seat.isEmpty = 1"));
+        nonacEmptySeat.setText(temp.getValue("SELECT Count(SeatId) FROM Seat Full Outer JOIN Room ON Room.RoomId = Seat.RoomId where Room.type='Non-Ac' and Seat.isEmpty = 1"));
         monthlyPayment.setText(temp.getValue("Select sum(amount) from payment where DateAndTime Like '"+year+"_"+month2+"%'"));
         dailyPayment.setText(temp.getValue("Select sum(amount) from payment where DateAndTime Like '"+f+"%'"));
         totalDue.setText(temp.getValue("Select sum(due) from member"));

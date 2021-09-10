@@ -40,7 +40,7 @@ public class PaymentHistory extends javax.swing.JFrame {
         jTable1.setDefaultEditor(Object.class, null);
         clearTable(jTable1);
         
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
             currentLength = arr.size()%16;
         else currentLength = 16;
         
@@ -63,7 +63,7 @@ public class PaymentHistory extends javax.swing.JFrame {
         jTable1.getColumn("Action").setCellEditor(new ButtonEditor(new JCheckBox(),jTable1));
         
         prevButton.setVisible(false);
-        if(arr.size()<16)
+        if(arr.size()<=16)
             nextButton.setVisible(false);
         int dailyPayment = 0,monthlyPayment = 0;
         String curDate,curMonth;
@@ -127,7 +127,6 @@ public class PaymentHistory extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1050, 570));
         setMinimumSize(new java.awt.Dimension(1050, 570));
-        setPreferredSize(new java.awt.Dimension(1050, 570));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(15, 19, 52));
@@ -196,21 +195,21 @@ public class PaymentHistory extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 980, 280));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 980, 290));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Total Monthly Payment:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 490, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 500, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Total Payment Today:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 440, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 450, -1, -1));
 
         totalMonthlyPayment.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         totalMonthlyPayment.setEnabled(false);
-        getContentPane().add(totalMonthlyPayment, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 490, 200, 30));
+        getContentPane().add(totalMonthlyPayment, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 500, 200, 30));
 
         totalPaymentToday.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         totalPaymentToday.setEnabled(false);
@@ -219,7 +218,7 @@ public class PaymentHistory extends javax.swing.JFrame {
                 totalPaymentTodayActionPerformed(evt);
             }
         });
-        getContentPane().add(totalPaymentToday, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 440, 200, 30));
+        getContentPane().add(totalPaymentToday, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 450, 200, 30));
 
         searchByMemberId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,7 +256,7 @@ public class PaymentHistory extends javax.swing.JFrame {
                 nextButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(nextButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 460, -1, -1));
+        getContentPane().add(nextButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, -1, -1));
 
         prevButton.setText("Prev");
         prevButton.addActionListener(new java.awt.event.ActionListener() {
@@ -265,7 +264,7 @@ public class PaymentHistory extends javax.swing.JFrame {
                 prevButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(prevButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, -1, -1));
+        getContentPane().add(prevButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 470, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/database_project2/hostel_bed.jpg"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1050, 490));
@@ -305,7 +304,7 @@ public class PaymentHistory extends javax.swing.JFrame {
         System.out.println(query);
         clearTable(jTable1);
         modIndex = 0;
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
             currentLength = arr.size()%16;
         else currentLength = 16;
         
@@ -326,7 +325,7 @@ public class PaymentHistory extends javax.swing.JFrame {
         
         
         prevButton.setVisible(false);
-        if(arr.size()<16)
+        if(arr.size()<=16)
             nextButton.setVisible(false);
         else nextButton.setVisible(true);
     }//GEN-LAST:event_searchButtonActionPerformed
@@ -352,7 +351,8 @@ public class PaymentHistory extends javax.swing.JFrame {
             {
                 try
                 {
-                    new ConnectMSSQL().delete("Payment"," where PaymentId = '"+jTable1.getValueAt(row, 0)+"'");
+                    
+                    new ConnectMSSQL().delete("Payment"," where PaymentId In (Select PaymentId from Payment where  PaymentId='"+jTable1.getValueAt(row, 0)+"')");
                     JOptionPane.showMessageDialog(this, "Payment Status deleted Succesfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                     new PaymentHistory(this.AdminId).setVisible(true);
                     this.setVisible(false);
@@ -372,18 +372,18 @@ public class PaymentHistory extends javax.swing.JFrame {
             prevButton.setVisible(false);
         nextButton.setVisible(true);
         clearTable(jTable1);
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
             currentLength = arr.size()%16;
         else currentLength = 16;
         for(int i=0;i<currentLength;i++)
         {
            
-            jTable1.getModel().setValueAt(arr.get(i).getPaymentId(),i, 0);
-            jTable1.getModel().setValueAt(arr.get(i).getMemberId(),i, 1);
-            jTable1.getModel().setValueAt(arr.get(i).getName(),i, 2);
-            jTable1.getModel().setValueAt(arr.get(i).getDateAndTime(),i, 3);
-            jTable1.getModel().setValueAt(arr.get(i).getAmount(),i, 4);
-            jTable1.getModel().setValueAt(arr.get(i).getAdminId(),i, 5);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getPaymentId(),i, 0);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getMemberId(),i, 1);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getName(),i, 2);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getDateAndTime(),i, 3);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getAmount(),i, 4);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getAdminId(),i, 5);
             jTable1.getModel().setValueAt("Delete", i,6);
             
             
@@ -397,18 +397,18 @@ public class PaymentHistory extends javax.swing.JFrame {
         if((modIndex+1)*16>=arr.size())
         nextButton.setVisible(false);
         clearTable(jTable1);
-        if((modIndex+1)*16>=arr.size())
+        if((modIndex+1)*16>arr.size())
         currentLength = arr.size()%16;
         else currentLength = 16;
        for(int i=0;i<currentLength;i++)
         {
            
-            jTable1.getModel().setValueAt(arr.get(i).getPaymentId(),i, 0);
-            jTable1.getModel().setValueAt(arr.get(i).getMemberId(),i, 1);
-            jTable1.getModel().setValueAt(arr.get(i).getName(),i, 2);
-            jTable1.getModel().setValueAt(arr.get(i).getDateAndTime(),i, 3);
-            jTable1.getModel().setValueAt(arr.get(i).getAmount(),i, 4);
-            jTable1.getModel().setValueAt(arr.get(i).getAdminId(),i, 5);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getPaymentId(),i, 0);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getMemberId(),i, 1);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getName(),i, 2);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getDateAndTime(),i, 3);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getAmount(),i, 4);
+            jTable1.getModel().setValueAt(arr.get(i+16*modIndex).getAdminId(),i, 5);
             jTable1.getModel().setValueAt("Delete", i,6);
             
             

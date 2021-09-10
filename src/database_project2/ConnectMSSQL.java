@@ -15,7 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import javafx.util.Pair;
+
 
 public class ConnectMSSQL {
     
@@ -730,6 +730,7 @@ public class ConnectMSSQL {
             //System.out.println("DATABASE NAME IS:" 3+ connection.getMetaData().getDatabaseProductName());
 
             Statement statement = connection.createStatement();
+            
             statement.executeUpdate("Update "+dbName+" Set "+query);
             
             
